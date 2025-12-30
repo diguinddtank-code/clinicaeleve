@@ -20,7 +20,7 @@ const ClinicFeatures: React.FC = () => {
               Esqueça o "cheiro de hospital". <br/>
               <span className="text-gray-500 italic font-light">Sinta-se em casa.</span>
             </h2>
-            <p className="text-gray-700 mb-10 text-lg font-normal leading-relaxed">
+            <p className="text-slate-700 mb-10 text-lg font-medium leading-relaxed">
               Na Eleve, redefinimos o conceito de consultório. Criamos uma atmosfera clara, limpa e acolhedora. Do café premium na recepção à tecnologia de sedação para ansiosos, tudo foi pensado para você relaxar enquanto cuidamos do seu sorriso.
             </p>
 
@@ -31,7 +31,7 @@ const ClinicFeatures: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-bold mb-1 text-eleve-black text-lg">Ambiente Climatizado</h4>
-                  <p className="text-sm text-gray-700 font-medium">Conforto térmico absoluto.</p>
+                  <p className="text-sm text-gray-700 font-semibold">Conforto térmico absoluto.</p>
                 </div>
               </div>
               <div className="flex gap-4 group">
@@ -40,7 +40,7 @@ const ClinicFeatures: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-bold mb-1 text-eleve-black text-lg">Biossegurança</h4>
-                  <p className="text-sm text-gray-700 font-medium">Esterilização padrão hospitalar.</p>
+                  <p className="text-sm text-gray-700 font-semibold">Esterilização padrão hospitalar.</p>
                 </div>
               </div>
               <div className="flex gap-4 group">
@@ -49,7 +49,7 @@ const ClinicFeatures: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-bold mb-1 text-eleve-black text-lg">Café & Conforto</h4>
-                  <p className="text-sm text-gray-700 font-medium">Mantenha-se relaxado.</p>
+                  <p className="text-sm text-gray-700 font-semibold">Mantenha-se relaxado.</p>
                 </div>
               </div>
               <div className="flex gap-4 group">
@@ -58,7 +58,7 @@ const ClinicFeatures: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-bold mb-1 text-eleve-black text-lg">Pontualidade</h4>
-                  <p className="text-sm text-gray-700 font-medium">Respeito total ao seu tempo.</p>
+                  <p className="text-sm text-gray-700 font-semibold">Respeito total ao seu tempo.</p>
                 </div>
               </div>
             </div>

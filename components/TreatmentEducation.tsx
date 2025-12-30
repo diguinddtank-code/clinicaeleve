@@ -70,7 +70,7 @@ const TreatmentEducation: React.FC = () => {
         <div className="text-center mb-10 md:mb-16">
             <span className="text-eleve-brand font-bold tracking-[0.2em] uppercase text-xs">Informação Técnica</span>
             <h2 className="text-3xl md:text-4xl font-serif text-eleve-black mt-2 font-bold">Passo a Passo do Tratamento</h2>
-            <p className="text-gray-700 mt-4 max-w-2xl mx-auto text-sm md:text-base font-normal">
+            <p className="text-slate-700 mt-4 max-w-2xl mx-auto text-sm md:text-base font-medium">
                 Entenda como realizamos nossos principais procedimentos com segurança e tecnologia.
             </p>
         </div>
@@ -86,7 +86,7 @@ const TreatmentEducation: React.FC = () => {
                         className={`flex items-center gap-3 p-4 rounded-lg transition-all duration-300 text-left min-w-[200px] lg:min-w-0 snap-center border ${
                             activeTab === t.id 
                             ? 'bg-eleve-brand text-white border-eleve-brand shadow-md' 
-                            : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'
+                            : 'bg-white text-gray-800 border-gray-200 hover:bg-gray-50 font-medium'
                         }`}
                     >
                         <div className={`${activeTab === t.id ? 'text-white' : 'text-eleve-brand'}`}>
@@ -110,18 +110,18 @@ const TreatmentEducation: React.FC = () => {
                             transition={{ duration: 0.3 }}
                         >
                             <h3 className="text-2xl font-serif text-eleve-black mb-3 font-bold">{activeContent.title}</h3>
-                            <p className="text-gray-700 mb-8 text-sm md:text-base leading-relaxed font-normal">{activeContent.description}</p>
+                            <p className="text-slate-700 mb-8 text-sm md:text-base leading-relaxed font-medium">{activeContent.description}</p>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {activeContent.steps.map((step, idx) => (
-                                    <div key={idx} className="bg-gray-50 p-4 rounded-lg border border-gray-200 hover:border-eleve-brand/30 transition-colors">
+                                    <div key={idx} className="bg-gray-50 p-4 rounded-lg border border-gray-200 hover:border-eleve-brand/30 transition-colors shadow-sm">
                                         <div className="flex items-start gap-3">
                                             <div className="bg-eleve-black text-white font-bold w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs mt-0.5">
                                                 {idx + 1}
                                             </div>
                                             <div>
                                                 <h4 className="font-bold text-eleve-black text-sm mb-1">{step.title}</h4>
-                                                <p className="text-xs text-gray-600 leading-relaxed font-medium">{step.text}</p>
+                                                <p className="text-xs text-gray-700 leading-relaxed font-semibold">{step.text}</p>
                                             </div>
                                         </div>
                                     </div>

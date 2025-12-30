@@ -122,7 +122,7 @@ const ServiceCard = ({ service, index, onOpen }: { service: any, index: number, 
       <div className="p-6 flex-grow flex flex-col justify-between relative bg-white">
         <div>
           <h3 className="text-xl font-serif text-eleve-black mb-3 group-hover:text-eleve-brand transition-colors font-bold">{service.title}</h3>
-          <p className="text-gray-700 font-normal text-sm mb-5 leading-relaxed">
+          <p className="text-slate-700 font-medium text-sm mb-5 leading-relaxed">
             {service.desc}
           </p>
         </div>
@@ -193,15 +193,15 @@ const ServiceModal = ({ service, onClose }: { service: any, onClose: () => void 
             {service.title}
           </h3>
           
-          <p className="text-gray-700 leading-relaxed mb-6 font-medium">
+          <p className="text-slate-700 leading-relaxed mb-6 font-medium text-base">
             {service.desc}
           </p>
 
           <div className="bg-gray-50 rounded-xl p-5 mb-8 border border-gray-100">
-            <h4 className="font-bold text-sm uppercase tracking-wide text-gray-500 mb-4">Principais Benefícios</h4>
+            <h4 className="font-bold text-sm uppercase tracking-wide text-gray-600 mb-4">Principais Benefícios</h4>
             <ul className="space-y-3">
               {service.benefits?.map((benefit: string, idx: number) => (
-                <li key={idx} className="flex items-start gap-3 text-gray-800 text-sm">
+                <li key={idx} className="flex items-start gap-3 text-slate-800 text-sm font-medium">
                   <CheckCircle2 size={16} className="text-eleve-brand shrink-0 mt-0.5" />
                   <span>{benefit}</span>
                 </li>
@@ -238,7 +238,7 @@ const Services: React.FC = () => {
         <div className="text-center mb-12">
            <span className="text-eleve-brand font-bold tracking-[0.2em] uppercase text-xs mb-3 block">Procedimentos Especializados</span>
            <h2 className="text-3xl md:text-4xl font-serif text-eleve-black mb-4 font-bold">Nossos Tratamentos</h2>
-           <p className="text-gray-700 max-w-2xl mx-auto font-normal text-base">
+           <p className="text-slate-700 max-w-2xl mx-auto font-medium text-base">
              Referência em <b>Cirurgias Complexas</b> e <b>Reabilitação Oral</b> no Ouro Preto.
            </p>
         </div>

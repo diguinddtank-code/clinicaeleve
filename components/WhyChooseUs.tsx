@@ -43,7 +43,7 @@ const WhyChooseUs: React.FC = () => {
         <div className="text-center mb-6 md:mb-10">
           <span className="text-eleve-brand font-bold tracking-[0.2em] uppercase text-[10px] md:text-xs mb-2 block">Diferenciais Eleve</span>
           <h2 className="text-xl md:text-4xl font-serif text-eleve-black mb-2 md:mb-3 font-bold">Por que escolher a Eleve?</h2>
-          <p className="text-gray-700 max-w-2xl mx-auto text-xs md:text-base font-normal hidden md:block">
+          <p className="text-slate-700 max-w-2xl mx-auto text-xs md:text-base font-medium hidden md:block">
             Segurança hospitalar com o conforto de uma clínica boutique.
           </p>
         </div>
@@ -69,7 +69,7 @@ const WhyChooseUs: React.FC = () => {
                 </h3>
               </div>
               
-              <p className="text-gray-600 leading-relaxed text-sm pl-0 md:pl-[3.5rem] hidden md:block font-medium">
+              <p className="text-slate-600 leading-relaxed text-sm pl-0 md:pl-[3.5rem] hidden md:block font-semibold">
                 {item.text}
               </p>
             </motion.div>

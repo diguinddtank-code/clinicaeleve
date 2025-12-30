@@ -1,65 +1,111 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Activity, Smile, Settings, Sparkles } from 'lucide-react';
+import { Activity, Smile, Settings, Sparkles, ArrowRight, ChevronRight } from 'lucide-react';
 import { WHATSAPP_DOR, WHATSAPP_ESTETICA, WHATSAPP_IMPLANTE, WHATSAPP_APARELHO } from '../constants';
 
 const Segmentation: React.FC = () => {
   const options = [
     {
-      icon: <Activity size={32} />,
+      icon: <Activity size={24} />,
       title: "Estou com Dor",
-      desc: "Atendimento prioritário para emergências, dor de siso ou canal.",
+      subtitle: "Prioridade",
       link: WHATSAPP_DOR,
-      color: "bg-red-50 hover:bg-red-100 border-red-100"
+      // Estilo de Emergência (Destaque sutil)
+      containerClass: "border-red-100 bg-red-50/30 hover:bg-red-50",
+      iconClass: "bg-red-100 text-red-600",
+      textClass: "text-red-900",
+      isEmergency: true
     },
     {
-      icon: <Settings size={32} />,
+      icon: <Settings size={24} />,
       title: "Implantes",
-      desc: "Repor dentes perdidos e voltar a sorrir com segurança.",
+      subtitle: "Reabilitação",
       link: WHATSAPP_IMPLANTE,
-      color: "bg-blue-50 hover:bg-blue-100 border-blue-100"
+      containerClass: "border-gray-100 bg-white hover:border-blue-200 hover:bg-blue-50/30",
+      iconClass: "bg-blue-50 text-blue-600 group-hover:bg-blue-100",
+      textClass: "text-eleve-black",
+      isEmergency: false
     },
     {
-      icon: <Smile size={32} />,
-      title: "Alinhar Sorriso",
-      desc: "Invisalign e aparelhos modernos para alinhar seus dentes.",
+      icon: <Smile size={24} />,
+      title: "Aparelhos",
+      subtitle: "Invisalign",
       link: WHATSAPP_APARELHO,
-      color: "bg-purple-50 hover:bg-purple-100 border-purple-100"
+      containerClass: "border-gray-100 bg-white hover:border-purple-200 hover:bg-purple-50/30",
+      iconClass: "bg-purple-50 text-purple-600 group-hover:bg-purple-100",
+      textClass: "text-eleve-black",
+      isEmergency: false
     },
     {
-      icon: <Sparkles size={32} />,
-      title: "Estética Dental",
-      desc: "Lentes de contato, clareamento e harmonização.",
+      icon: <Sparkles size={24} />,
+      title: "Estética",
+      subtitle: "Lentes/Clareamento",
       link: WHATSAPP_ESTETICA,
-      color: "bg-amber-50 hover:bg-amber-100 border-amber-100"
+      containerClass: "border-gray-100 bg-white hover:border-amber-200 hover:bg-amber-50/30",
+      iconClass: "bg-amber-50 text-amber-600 group-hover:bg-amber-100",
+      textClass: "text-eleve-black",
+      isEmergency: false
     }
   ];
 
   return (
-    <section className="py-16 bg-white relative z-30 -mt-10 md:-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-gray-100">
-            <div className="text-center mb-10">
-                <h3 className="text-2xl font-serif text-eleve-black font-bold">O que você procura hoje?</h3>
-                <p className="text-gray-500 text-sm mt-2">Selecione uma opção para atendimento personalizado</p>
+    <section className="relative z-30 -mt-8 md:-mt-20 px-4 pb-12">
+      <div className="max-w-7xl mx-auto">
+        <div className="bg-white rounded-2xl md:rounded-3xl shadow-[0_15px_40px_-10px_rgba(0,0,0,0.1)] p-6 md:p-10 border border-gray-100 relative overflow-hidden">
+            
+            {/* Título da Seção */}
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-gray-100 pb-6">
+                <div>
+                    <h3 className="text-xl md:text-2xl font-serif text-eleve-black font-bold">O que você precisa?</h3>
+                    <p className="text-gray-600 text-xs md:text-sm mt-1 font-medium">Selecione para atendimento via WhatsApp</p>
+                </div>
+                {/* Indicador visual de status online */}
+                <div className="hidden md:flex items-center gap-2 text-xs font-bold text-green-600 bg-green-50 px-3 py-1.5 rounded-full border border-green-100">
+                    <span className="relative flex h-2.5 w-2.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                    </span>
+                    Equipe Online Agora
+                </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* GRID: 1 Coluna no Mobile (Lista), 4 no Desktop */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {options.map((opt, index) => (
                     <motion.a
                         key={index}
                         href={opt.link}
                         target="_blank"
-                        whileHover={{ y: -5 }}
-                        className={`flex flex-col items-center text-center p-6 rounded-xl border transition-all duration-300 ${opt.color} group cursor-pointer`}
+                        whileHover={{ y: -2, scale: 1.01 }}
+                        whileTap={{ scale: 0.98 }}
+                        className={`
+                          group relative flex items-center p-4 rounded-xl border transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md
+                          ${opt.containerClass}
+                        `}
                     >
-                        <div className="mb-4 text-eleve-black/70 group-hover:scale-110 transition-transform duration-300">
+                        {/* Ícone à Esquerda */}
+                        <div className={`h-12 w-12 rounded-lg flex items-center justify-center shrink-0 transition-colors duration-300 ${opt.iconClass}`}>
                             {opt.icon}
                         </div>
-                        <h4 className="font-bold text-lg text-eleve-black mb-2">{opt.title}</h4>
-                        <p className="text-sm text-gray-600 leading-relaxed">
-                            {opt.desc}
-                        </p>
+                        
+                        {/* Texto no Meio */}
+                        <div className="ml-4 flex-grow">
+                            <h4 className={`font-bold text-base leading-tight ${opt.textClass}`}>{opt.title}</h4>
+                            <p className="text-xs text-gray-600 font-bold uppercase tracking-wide mt-0.5">{opt.subtitle}</p>
+                        </div>
+
+                        {/* Ação à Direita */}
+                        <div className={`h-8 w-8 rounded-full flex items-center justify-center transition-all duration-300 ${opt.isEmergency ? 'bg-red-100 text-red-600' : 'bg-gray-50 text-gray-400 group-hover:bg-eleve-brand group-hover:text-white'}`}>
+                            <ChevronRight size={18} className={`${opt.isEmergency ? '' : 'group-hover:translate-x-0.5 transition-transform'}`} />
+                        </div>
+
+                        {/* Efeito Ping para Emergência */}
+                        {opt.isEmergency && (
+                             <span className="absolute top-0 right-0 -mt-1 -mr-1 flex h-3 w-3">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                            </span>
+                        )}
                     </motion.a>
                 ))}
             </div>

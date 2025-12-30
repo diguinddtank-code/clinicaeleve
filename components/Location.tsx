@@ -8,7 +8,7 @@ const Location: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-serif font-bold text-eleve-dark mb-4">Onde Estamos</h2>
-          <p className="text-gray-700 font-medium">Fácil acesso para moradores do Ouro Preto, Castelo e região da Pampulha.</p>
+          <p className="text-slate-700 font-medium">Fácil acesso para moradores do Ouro Preto, Castelo e região da Pampulha.</p>
         </div>
 
         <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden flex flex-col lg:flex-row">
@@ -24,7 +24,7 @@ const Location: React.FC = () => {
                     </div>
                     <div>
                     <p className="font-bold text-lg text-gray-900">Endereço</p>
-                    <p className="text-gray-700 text-sm leading-relaxed font-medium">{ADDRESS}</p>
+                    <p className="text-slate-700 text-sm leading-relaxed font-semibold">{ADDRESS}</p>
                     </div>
                 </div>
 
@@ -34,8 +34,8 @@ const Location: React.FC = () => {
                     </div>
                     <div>
                     <p className="font-bold text-lg text-gray-900">Contato</p>
-                    <p className="text-gray-700 font-medium">{PHONE_DISPLAY}</p>
-                    <p className="text-gray-600 text-sm">elevebh@gmail.com</p>
+                    <p className="text-slate-700 font-semibold">{PHONE_DISPLAY}</p>
+                    <p className="text-slate-600 text-sm font-medium">elevebh@gmail.com</p>
                     </div>
                 </div>
 
@@ -45,8 +45,8 @@ const Location: React.FC = () => {
                     </div>
                     <div>
                     <p className="font-bold text-lg text-gray-900">Horários</p>
-                    <p className="text-gray-700 text-sm font-medium">Seg - Sex: 08:00 - 18:00</p>
-                    <p className="text-gray-700 text-sm font-medium">Sábado: Sob agendamento</p>
+                    <p className="text-slate-700 text-sm font-semibold">Seg - Sex: 08:00 - 18:00</p>
+                    <p className="text-slate-700 text-sm font-semibold">Sábado: Sob agendamento</p>
                     </div>
                 </div>
                 </div>

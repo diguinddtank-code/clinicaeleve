@@ -12,7 +12,7 @@ const FAQ: React.FC = () => {
               <span>Vocês aceitam convênios?</span>
               <span className="transition group-open:rotate-45"><Plus /></span>
             </summary>
-            <p className="text-gray-600 mt-3 group-open:animate-fadeIn">
+            <p className="text-slate-700 font-medium mt-3 group-open:animate-fadeIn">
               Trabalhamos predominantemente com atendimento particular para garantir a máxima qualidade e tempo dedicado a cada paciente. Entre em contato para verificar condições especiais e reembolsos.
             </p>
           </details>
@@ -22,7 +22,7 @@ const FAQ: React.FC = () => {
               <span>Como funciona o implante dentário?</span>
               <span className="transition group-open:rotate-45"><Plus /></span>
             </summary>
-            <p className="text-gray-600 mt-3 group-open:animate-fadeIn">
+            <p className="text-slate-700 font-medium mt-3 group-open:animate-fadeIn">
               O implante é uma raiz artificial de titânio. O Dr. André Araújo é especialista no assunto. O procedimento é seguro, feito com anestesia local e, em muitos casos, pode ser feito com carga imediata (dente no mesmo dia).
             </p>
           </details>
@@ -32,7 +32,7 @@ const FAQ: React.FC = () => {
               <span>A clínica fica perto de quais bairros?</span>
               <span className="transition group-open:rotate-45"><Plus /></span>
             </summary>
-            <p className="text-gray-600 mt-3 group-open:animate-fadeIn">
+            <p className="text-slate-700 font-medium mt-3 group-open:animate-fadeIn">
               Estamos no coração do bairro <b>Ouro Preto</b>, com acesso muito fácil para quem vem do bairro <b>Castelo</b>, Paquetá, Alípio de Melo e toda a região da Pampulha em BH.
             </p>
           </details>
@@ -42,7 +42,7 @@ const FAQ: React.FC = () => {
               <span>Fazem cirurgia de siso?</span>
               <span className="transition group-open:rotate-45"><Plus /></span>
             </summary>
-            <p className="text-gray-600 mt-3 group-open:animate-fadeIn">
+            <p className="text-slate-700 font-medium mt-3 group-open:animate-fadeIn">
               Sim! O Dr. André é especialista Buco-Maxilo-Facial, sendo referência na remoção de sisos inclusos e impactados com segurança e conforto.
             </p>
           </details>

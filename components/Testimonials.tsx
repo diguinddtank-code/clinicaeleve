@@ -67,7 +67,7 @@ const Testimonials: React.FC = () => {
               <span className="text-xs font-bold text-white uppercase tracking-wider">Excelência em BH</span>
            </div>
            <h2 className="text-3xl md:text-5xl font-serif text-white mb-4">Pacientes Reais. <span className="text-eleve-gold italic">Resultados Reais.</span></h2>
-           <p className="text-gray-400 max-w-xl mx-auto font-light">
+           <p className="text-gray-300 max-w-xl mx-auto font-normal">
              A satisfação de quem já transformou o sorriso conosco.
            </p>
         </div>
@@ -101,7 +101,7 @@ const Testimonials: React.FC = () => {
                     </div>
                     <div>
                         <p className="font-bold text-white text-sm leading-tight">{t.name}</p>
-                        <p className="text-gray-500 text-xs mt-0.5">{t.time}</p>
+                        <p className="text-gray-400 text-xs mt-0.5">{t.time}</p>
                     </div>
                 </div>
                 <div className="bg-white p-1.5 rounded-full shadow-sm opacity-80 group-hover:opacity-100 transition-opacity">
@@ -116,13 +116,13 @@ const Testimonials: React.FC = () => {
               </div>
 
               <Quote className="text-eleve-gold/40 mb-2 h-8 w-8 rotate-180" />
-              <p className="text-gray-200 font-light text-base md:text-lg leading-relaxed mb-6">
+              <p className="text-gray-100 font-normal text-base md:text-lg leading-relaxed mb-6">
                 "{t.text}"
               </p>
 
               <div className="pt-4 border-t border-white/5 flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-eleve-gold">{t.treatment}</span>
-                <span className="text-[10px] text-gray-500 bg-white/5 px-2 py-1 rounded">Verificado</span>
+                <span className="text-[10px] text-gray-400 bg-white/5 px-2 py-1 rounded">Verificado</span>
               </div>
             </div>
           ))}
