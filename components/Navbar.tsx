@@ -14,6 +14,15 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Travar o scroll quando o menu estiver aberto
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
+
   const navLinks = [
     { name: 'Início', href: '#home' },
     { name: 'Especialistas', href: '#doctors' },
@@ -23,7 +32,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-500 border-b ${
+      className={`fixed w-full z-[100] transition-all duration-500 border-b ${
         isScrolled 
           ? 'bg-white/95 backdrop-blur-md shadow-lg py-2 border-gray-100' 
           : 'bg-transparent py-6 border-transparent'
@@ -33,14 +42,12 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center">
           
           {/* LOGO com Animação */}
-          <div className="flex-shrink-0 z-50 relative">
-            <a href="#home" className="block group">
+          <div className="flex-shrink-0 z-[102] relative">
+            <a href="#home" className="block group" onClick={() => setIsOpen(false)}>
               <img
                 className={`w-auto object-contain transition-all duration-500 ease-in-out ${
-                  // Controle de Altura: Maior no topo, menor ao rolar
                   isScrolled ? 'h-12' : 'h-16 md:h-20'
                 } ${
-                  // Controle de Cor: Branco no topo (fundo escuro), Original ao rolar (fundo branco)
                   !isScrolled && !isOpen ? 'brightness-0 invert drop-shadow-md' : ''
                 }`}
                 src={IMAGES.logo}
@@ -78,14 +85,15 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Mobile Button */}
-          <div className="md:hidden flex items-center z-50 relative">
+          <div className="md:hidden flex items-center z-[102] relative">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 transition-colors ${
+              className={`p-2 rounded-md transition-colors focus:outline-none ${
                 isOpen 
-                  ? 'text-eleve-black' 
+                  ? 'text-eleve-black bg-gray-100/50' 
                   : (isScrolled ? 'text-eleve-black' : 'text-white')
               }`}
+              aria-label="Menu"
             >
               {isOpen ? <X size={32} /> : <Menu size={32} />}
             </button>
@@ -95,7 +103,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu Overlay */}
       <div 
-        className={`fixed inset-0 bg-white z-40 transform transition-transform duration-500 ease-in-out ${
+        className={`fixed inset-0 bg-white z-[101] transform transition-transform duration-500 ease-in-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         } md:hidden flex flex-col justify-center items-center space-y-8 shadow-2xl`}
       >
