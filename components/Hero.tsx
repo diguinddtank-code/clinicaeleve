@@ -90,7 +90,7 @@ const Hero: React.FC = () => {
          ========================================= */}
       
       {/* Lado Esquerdo: Conteúdo e Tipografia */}
-      <div className="hidden md:flex w-1/2 h-full bg-eleve-black relative z-20 flex-col justify-center px-10 lg:px-16 xl:px-24 2xl:px-32">
+      <div className="hidden md:flex w-1/2 h-full bg-eleve-black relative z-20 flex-col justify-center px-10 lg:px-16 xl:px-24 2xl:px-32 pt-28">
         {/* Elemento Decorativo de Fundo (Glow) */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
             <div className="absolute -top-40 -left-40 w-96 h-96 bg-eleve-brand/10 rounded-full blur-[100px]"></div>
@@ -103,14 +103,14 @@ const Hero: React.FC = () => {
             transition={{ duration: 1, ease: "easeOut" }}
             className="relative z-20"
         >
-            <div className="inline-flex items-center gap-3 mb-8">
+            <div className="inline-flex items-center gap-3 mb-6 lg:mb-8">
                 <div className="h-[1px] w-12 bg-eleve-gold"></div>
                 <span className="text-eleve-gold font-bold tracking-[0.3em] uppercase text-xs lg:text-sm">
                     Odontologia de Alta Performance
                 </span>
             </div>
 
-            <h1 className="text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-serif text-white leading-[1.1] mb-8">
+            <h1 className="text-4xl lg:text-5xl xl:text-7xl 2xl:text-8xl font-serif text-white leading-[1.1] mb-6 lg:mb-8">
                 Sorrisos que <br/>
                 <span className="italic text-gray-300 font-light relative inline-block">
                     definem você.
@@ -120,19 +120,19 @@ const Hero: React.FC = () => {
             </h1>
 
             {/* Texto de apoio com cor mais clara para leitura fácil */}
-            <p className="text-gray-300 text-lg lg:text-xl font-normal leading-relaxed max-w-xl mb-12 border-l-2 border-eleve-brand/50 pl-8">
+            <p className="text-gray-300 text-base lg:text-lg xl:text-xl font-normal leading-relaxed max-w-xl mb-8 lg:mb-12 border-l-2 border-eleve-brand/50 pl-6 lg:pl-8">
                 A união perfeita entre a precisão da cirurgia e a arte da estética. 
                 Sua referência em <b>Implantes</b> e <b>Ortognática</b> no Ouro Preto.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 lg:gap-6">
                 
                 {/* BOTÃO PRINCIPAL */}
                 <a 
                     href={WHATSAPP_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative px-8 py-5 bg-gradient-to-r from-eleve-success to-teal-600 text-white font-bold uppercase tracking-widest text-sm rounded-sm hover:translate-y-[-2px] transition-all duration-300 shadow-[0_0_25px_rgba(5,150,105,0.3)] hover:shadow-[0_0_35px_rgba(5,150,105,0.6)] flex items-center gap-4 overflow-hidden"
+                    className="group relative px-6 lg:px-8 py-4 lg:py-5 bg-gradient-to-r from-eleve-success to-teal-600 text-white font-bold uppercase tracking-widest text-xs lg:text-sm rounded-sm hover:translate-y-[-2px] transition-all duration-300 shadow-[0_0_25px_rgba(5,150,105,0.3)] hover:shadow-[0_0_35px_rgba(5,150,105,0.6)] flex items-center gap-4 overflow-hidden"
                 >
                     <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
                     
@@ -145,21 +145,21 @@ const Hero: React.FC = () => {
                 {/* BOTÃO SECUNDÁRIO */}
                 <a 
                     href="#doctors"
-                    className="group px-8 py-5 bg-white/5 backdrop-blur-sm border border-white/10 text-white font-bold uppercase tracking-widest text-sm rounded-sm hover:bg-white/10 hover:border-white/30 transition-all flex items-center gap-3"
+                    className="group px-6 lg:px-8 py-4 lg:py-5 bg-white/5 backdrop-blur-sm border border-white/10 text-white font-bold uppercase tracking-widest text-xs lg:text-sm rounded-sm hover:bg-white/10 hover:border-white/30 transition-all flex items-center gap-3"
                 >
                     Conhecer Clínica
                 </a>
             </div>
 
             {/* Badges de Autoridade */}
-            <div className="mt-16 flex items-center gap-8 text-gray-400 text-xs font-bold uppercase tracking-wider opacity-100">
+            <div className="mt-12 lg:mt-16 flex items-center gap-6 lg:gap-8 text-gray-400 text-[10px] lg:text-xs font-bold uppercase tracking-wider opacity-100">
                 <div className="flex items-center gap-2">
-                    <ShieldCheck className="text-eleve-brand" size={18} />
+                    <ShieldCheck className="text-eleve-brand" size={16} />
                     <span>Biossegurança Hospitalar</span>
                 </div>
                 <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
                 <div className="flex items-center gap-2">
-                    <PlayCircle className="text-eleve-brand" size={18} />
+                    <PlayCircle className="text-eleve-brand" size={16} />
                     <span>Tecnologia Digital 3D</span>
                 </div>
             </div>

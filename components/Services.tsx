@@ -78,7 +78,7 @@ const services = [
   }
 ];
 
-const ServiceCard = ({ service, index, onOpen }: { service: any, index: number, onOpen: () => void }) => {
+const ServiceCard: React.FC<{ service: any, index: number, onOpen: () => void }> = ({ service, index, onOpen }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -138,7 +138,7 @@ const ServiceCard = ({ service, index, onOpen }: { service: any, index: number, 
   );
 };
 
-const ServiceModal = ({ service, onClose }: { service: any, onClose: () => void }) => {
+const ServiceModal: React.FC<{ service: any, onClose: () => void }> = ({ service, onClose }) => {
   if (!service) return null;
 
   const whatsappMessage = `Olá! Vi os detalhes sobre *${service.title}* no site da Eleve e gostaria de agendar uma avaliação.`;

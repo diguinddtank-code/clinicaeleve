@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
       className={`fixed w-full z-[100] transition-all duration-500 border-b ${
         isScrolled 
           ? 'bg-white/95 backdrop-blur-md shadow-lg py-2 border-gray-100' 
-          : 'bg-transparent py-6 border-transparent'
+          : 'bg-transparent py-4 md:py-6 border-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
             <a href="#home" className="block group" onClick={() => setIsOpen(false)}>
               <img
                 className={`w-auto object-contain transition-all duration-500 ease-in-out ${
-                  isScrolled ? 'h-12' : 'h-16 md:h-20'
+                  isScrolled ? 'h-10 md:h-12' : 'h-14 md:h-16 lg:h-20'
                 } ${
                   !isScrolled && !isOpen ? 'brightness-0 invert drop-shadow-md' : ''
                 }`}
@@ -57,12 +57,12 @@ const Navbar: React.FC = () => {
           </div>
           
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-10">
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-10">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className={`text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:text-eleve-brand relative group ${
+                className={`text-[10px] lg:text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:text-eleve-brand relative group ${
                   isScrolled ? 'text-eleve-dark' : 'text-white drop-shadow-md'
                 }`}
               >
@@ -74,10 +74,10 @@ const Navbar: React.FC = () => {
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className={`px-8 transition-all duration-300 font-bold uppercase text-xs tracking-widest border rounded-sm flex items-center justify-center ${
+              className={`px-6 lg:px-8 transition-all duration-300 font-bold uppercase text-[10px] lg:text-xs tracking-widest border rounded-sm flex items-center justify-center ${
                 isScrolled 
                   ? 'py-2 border-eleve-brand text-eleve-brand hover:bg-eleve-brand hover:text-white' 
-                  : 'py-3 border-white text-white hover:bg-white hover:text-eleve-black'
+                  : 'py-2 lg:py-3 border-white text-white hover:bg-white hover:text-eleve-black'
               }`}
             >
               Agendar
