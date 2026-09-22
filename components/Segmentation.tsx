@@ -49,9 +49,9 @@ const Segmentation: React.FC = () => {
   ];
 
   return (
-    <section className="relative z-30 -mt-8 md:-mt-20 px-4 pb-12">
+    <section className="relative z-30 -mt-6 sm:-mt-8 md:-mt-10 lg:-mt-14 xl:-mt-16 px-4 pb-8 sm:pb-12">
       <div className="max-w-7xl mx-auto">
-        <div className="bg-white rounded-2xl md:rounded-3xl shadow-[0_15px_40px_-10px_rgba(0,0,0,0.1)] p-6 md:p-10 border border-gray-100 relative overflow-hidden">
+        <div className="bg-white rounded-2xl md:rounded-3xl shadow-[0_15px_40px_-10px_rgba(0,0,0,0.1)] p-5 sm:p-6 md:p-8 lg:p-10 border border-gray-100 relative overflow-hidden">
             
             {/* Título da Seção */}
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-gray-100 pb-6">

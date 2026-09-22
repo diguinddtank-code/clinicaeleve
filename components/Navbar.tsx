@@ -60,7 +60,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage = 'home', onNavigate }) => 
       className={`fixed w-full z-[100] transition-all duration-500 border-b ${
         isScrolled 
           ? 'bg-white/95 backdrop-blur-md shadow-lg py-2 border-gray-100' 
-          : 'bg-transparent py-4 md:py-6 border-transparent'
+          : 'bg-transparent py-3 md:py-4 lg:py-5 border-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,7 +74,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage = 'home', onNavigate }) => 
             >
               <img
                 className={`w-auto object-contain transition-all duration-500 ease-in-out ${
-                  isScrolled ? 'h-10 md:h-12' : 'h-14 md:h-16 lg:h-20'
+                  isScrolled ? 'h-9 md:h-10 lg:h-11' : 'h-10 sm:h-12 md:h-12 lg:h-14 xl:h-16'
                 } ${
                   !isScrolled && !isOpen ? 'brightness-0 invert drop-shadow-md' : ''
                 }`}
@@ -85,7 +85,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage = 'home', onNavigate }) => 
           </div>
           
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-5 lg:space-x-8">
+          <div className="hidden lg:flex items-center space-x-4 xl:space-x-7">
             {navLinks.map((link) => {
               const isCurrent = 
                 (link.page === 'about' && currentPage === 'about') || 
@@ -97,7 +97,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage = 'home', onNavigate }) => 
                 <button
                   key={link.name}
                   onClick={() => handleNavClick(link.page, link.section)}
-                  className={`text-[10px] lg:text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 relative group cursor-pointer ${
+                  className={`text-[10px] xl:text-xs font-bold tracking-[0.15em] xl:tracking-[0.2em] uppercase transition-all duration-300 relative group cursor-pointer whitespace-nowrap ${
                     isCurrent
                       ? (isScrolled ? 'text-eleve-brand' : 'text-eleve-gold font-black')
                       : (isScrolled ? 'text-eleve-dark hover:text-eleve-brand' : 'text-white hover:text-eleve-gold drop-shadow-md')
@@ -114,18 +114,18 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage = 'home', onNavigate }) => 
             })}
             <button
               onClick={() => handleNavClick('contact')}
-              className={`px-6 lg:px-8 transition-all duration-300 font-bold uppercase text-[10px] lg:text-xs tracking-widest border rounded-sm flex items-center justify-center cursor-pointer ${
+              className={`px-5 xl:px-7 transition-all duration-300 font-bold uppercase text-[10px] xl:text-xs tracking-widest border rounded-sm flex items-center justify-center cursor-pointer whitespace-nowrap ${
                 isScrolled 
                   ? 'py-2 border-eleve-brand text-eleve-brand hover:bg-eleve-brand hover:text-white' 
-                  : 'py-2 lg:py-3 border-white text-white hover:bg-white hover:text-eleve-black'
+                  : 'py-2 lg:py-2.5 border-white text-white hover:bg-white hover:text-eleve-black'
               }`}
             >
               Agendar
             </button>
           </div>
 
-          {/* Mobile Button */}
-          <div className="md:hidden flex items-center z-[102] relative">
+          {/* Mobile / Tablet Button */}
+          <div className="lg:hidden flex items-center z-[102] relative">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={`p-2 rounded-md transition-colors focus:outline-none cursor-pointer ${
@@ -135,17 +135,17 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage = 'home', onNavigate }) => 
               }`}
               aria-label="Abrir Menu"
             >
-              {isOpen ? <X size={32} /> : <Menu size={32} />}
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile / Tablet Menu Overlay */}
       <div 
         className={`fixed inset-0 bg-white z-[101] transform transition-transform duration-500 ease-in-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
-        } md:hidden flex flex-col justify-center items-center space-y-6 shadow-2xl px-6`}
+        } lg:hidden flex flex-col justify-center items-center space-y-6 shadow-2xl px-6`}
       >
         <div className="absolute top-0 left-0 w-full h-1 bg-eleve-brand" />
         

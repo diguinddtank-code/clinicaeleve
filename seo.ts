@@ -82,7 +82,6 @@ export const SEO_DATA: Record<Subpage, PageSeoConfig> = {
             'Dentistry',
             'Oral and Maxillofacial Surgery',
             'Orthodontics',
-            'Endodontics',
             'Dental Implants'
           ],
           founder: [
@@ -98,7 +97,7 @@ export const SEO_DATA: Record<Subpage, PageSeoConfig> = {
               '@type': 'Person',
               '@id': `${BASE_URL}/sobre#dra-ana`,
               name: 'Dra. Ana Luiza',
-              jobTitle: 'Ortodontista e Endodontista',
+              jobTitle: 'Ortodontista e Ortopedista Facial',
               image: DRA_ANA_IMG,
               sameAs: 'https://www.instagram.com/aninhadovi/'
             }
@@ -127,8 +126,8 @@ export const SEO_DATA: Record<Subpage, PageSeoConfig> = {
   about: {
     path: '/sobre',
     title: 'Sobre a Eleve Odontologia | Especialistas Titulares e Estrutura 3D em BH',
-    description: 'Conheça o corpo clínico titular da Eleve Odontologia em BH. Dr. André Araújo (Cirurgia Bucomaxilofacial) e Dra. Ana Luiza (Ortodontia e Endodontia). Sem rotatividade profissional.',
-    keywords: 'sobre eleve odontologia, dr andre araujo bucomaxilofacial bh, dra ana luiza ortodontista, dentistas ouro preto bh, clinica odontologica castelo bh, equipe medica eleve, historia eleve odontologia',
+    description: 'Conheça o corpo clínico titular da Eleve Odontologia em BH. Dr. André Araújo (Cirurgia Bucomaxilofacial) e Dra. Ana Luiza (Ortodontia e Ortopedia Facial). Sem rotatividade profissional.',
+    keywords: 'sobre eleve odontologia, dr andre araujo bucomaxilofacial bh, dra ana luiza ortodontista bh, dentistas ouro preto bh, clinica odontologica castelo bh, equipe medica eleve, historia eleve odontologia',
     canonicalUrl: `${BASE_URL}/sobre`,
     ogType: 'article',
     ogTitle: 'Sobre a Eleve Odontologia | Especialistas Titulares em BH',
@@ -191,19 +190,19 @@ export const SEO_DATA: Record<Subpage, PageSeoConfig> = {
           '@type': 'Person',
           '@id': `${BASE_URL}/sobre#dra-ana`,
           name: 'Dra. Ana Luiza',
-          jobTitle: 'Ortodontista e Endodontista',
+          jobTitle: 'Ortodontista e Ortopedista Facial',
           worksFor: {
             '@id': `${BASE_URL}/#clinic`
           },
           image: DRA_ANA_IMG,
-          description: 'Especialista em Ortodontia Corretiva e Ortopedia Facial pela UFMG. Invisalign Doctor certificada e especialista em Endodontia Microscópica Automatizada.',
+          description: 'Especialista em Ortodontia Corretiva e Ortopedia Facial pela UFMG. Invisalign Doctor certificada com foco em alinhamento estético de alta precisão.',
           alumniOf: [
             {
               '@type': 'EducationalOrganization',
               name: 'Universidade Federal de Minas Gerais (UFMG)'
             }
           ],
-          medicalSpecialty: ['Orthodontics', 'Endodontics'],
+          medicalSpecialty: ['Orthodontics', 'Dentistry'],
           sameAs: 'https://www.instagram.com/aninhadovi/'
         },
         {
@@ -243,8 +242,8 @@ export const SEO_DATA: Record<Subpage, PageSeoConfig> = {
   treatments: {
     path: '/tratamentos',
     title: 'Tratamentos e Cirurgias Odontológicas Avançadas | Eleve Odontologia BH',
-    description: 'Dossiê completo de tratamentos: Cirurgia Ortognática 3D, Implantes Guiados, Invisalign, Extração de Sisos Inclusos e Sedação Consciente em Belo Horizonte.',
-    keywords: 'cirurgia ortognatica bh, implante guiado tomografia, invisalign ouro preto bh, extracao siso incluso bh, tratamento canal microscopio bh, clareamento dental seguro bh, sedacao para dentista bh',
+    description: 'Dossiê completo de tratamentos: Cirurgia Ortognática 3D, Implantes Guiados, Invisalign, Aparelhos Autoligados e Sedação Consciente em Belo Horizonte.',
+    keywords: 'cirurgia ortognatica bh, implante guiado tomografia, invisalign ouro preto bh, extracao siso incluso bh, aparelho autoligado bh, aparelho safira bh, clareamento dental seguro bh, sedacao para dentista bh',
     canonicalUrl: `${BASE_URL}/tratamentos`,
     ogType: 'article',
     ogTitle: 'Tratamentos e Cirurgias Odontológicas de Alta Performance | Eleve',
@@ -316,10 +315,10 @@ export const SEO_DATA: Record<Subpage, PageSeoConfig> = {
               {
                 '@type': 'MedicalProcedure',
                 position: 5,
-                name: 'Endodontia Guiada & Microscópica',
-                procedureType: 'PercutaneousProcedure',
-                description: 'Tratamento e retratamento de canal em sessão única ou reduzida sob ampliação com microscópio operatório e localizador apical digital.',
-                bodyLocation: 'Dental Pulp, Root Canals'
+                name: 'Aparelhos Autoligados & Safira Estética',
+                procedureType: 'NoninvasiveProcedure',
+                description: 'Tratamento ortodôntico de alta performance com braquetes de safira translúcida ou sistema autoligado, reduzindo o tempo de tratamento com máxima discrição visual.',
+                bodyLocation: 'Teeth, Dental Arch'
               },
               {
                 '@type': 'MedicalProcedure',
