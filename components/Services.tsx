@@ -229,7 +229,11 @@ const ServiceModal: React.FC<{ service: any, onClose: () => void }> = ({ service
   );
 };
 
-const Services: React.FC = () => {
+interface ServicesProps {
+  onViewAllTreatments?: () => void;
+}
+
+const Services: React.FC<ServicesProps> = ({ onViewAllTreatments }) => {
   const [selectedService, setSelectedService] = useState<any>(null);
 
   return (
@@ -252,6 +256,22 @@ const Services: React.FC = () => {
               onOpen={() => setSelectedService(service)}
             />
           ))}
+        </div>
+
+        <div className="mt-14 text-center">
+          <button
+            onClick={() => {
+              if (onViewAllTreatments) {
+                onViewAllTreatments();
+              } else {
+                window.location.hash = '#tratamentos';
+              }
+            }}
+            className="inline-flex items-center gap-3 px-8 py-4 bg-eleve-black hover:bg-eleve-brand text-white font-bold uppercase tracking-wider text-xs rounded-sm transition-all shadow-md cursor-pointer"
+          >
+            Acessar Página Completa de Tratamentos & Cirurgias
+            <ArrowRight size={16} />
+          </button>
         </div>
       </div>
 

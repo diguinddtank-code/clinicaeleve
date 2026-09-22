@@ -3,7 +3,11 @@ import { motion } from 'framer-motion';
 import { IMAGES, DR_ANDRE_INSTAGRAM, DR_ANA_INSTAGRAM } from '../constants';
 import { Instagram, CheckCircle2, ArrowRight, ShieldCheck, Award } from 'lucide-react';
 
-const AboutDoctors: React.FC = () => {
+interface AboutDoctorsProps {
+  onViewFullAbout?: () => void;
+}
+
+const AboutDoctors: React.FC<AboutDoctorsProps> = ({ onViewFullAbout }) => {
   return (
     <section id="doctors" className="py-20 lg:py-32 bg-white text-eleve-black overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -186,6 +190,40 @@ const AboutDoctors: React.FC = () => {
             </motion.div>
 
         </div>
+
+        {/* Banner de Chamada para a Página Sobre Nós Completa */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-20 p-8 sm:p-12 rounded-3xl bg-eleve-black text-white flex flex-col md:flex-row items-center justify-between gap-8 border border-white/10 shadow-2xl relative overflow-hidden"
+        >
+          <div className="space-y-2 text-center md:text-left z-10">
+            <span className="text-eleve-gold font-bold uppercase tracking-widest text-xs">
+              História e Estrutura
+            </span>
+            <h3 className="text-2xl md:text-3xl font-serif font-bold text-white">
+              Quer conhecer a fundo nossa história e estrutura cirúrgica?
+            </h3>
+            <p className="text-gray-300 text-sm md:text-base max-w-xl font-light">
+              Entenda por que a Eleve recusa o atendimento em massa e como aplicamos tecnologia 3D e sedação médica em Belo Horizonte.
+            </p>
+          </div>
+          <button
+            onClick={() => {
+              if (onViewFullAbout) {
+                onViewFullAbout();
+              } else {
+                window.location.hash = '#sobre';
+              }
+            }}
+            className="z-10 inline-flex items-center gap-3 px-8 py-4 bg-eleve-gold hover:bg-eleve-goldLight text-eleve-black font-bold uppercase tracking-wider text-xs rounded-sm transition-all shadow-lg shrink-0 cursor-pointer"
+          >
+            Conhecer a Página Sobre Nós
+            <ArrowRight size={16} />
+          </button>
+        </motion.div>
+
       </div>
     </section>
   );

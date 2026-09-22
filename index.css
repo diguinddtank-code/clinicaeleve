@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  ::selection {
+    background-color: #0e7490;
+    color: #ffffff;
+  }
+}
+
+/* Scroll suave e refinamento visual */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Glassmorphism e sutilezas Awwwards */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(229, 231, 235, 0.8);
+}
+
+.glass-panel-dark {
+  background: rgba(18, 18, 18, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #C6A87C 0%, #E5D4B8 50%, #B89766 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

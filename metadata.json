@@ -1,5 +1,8 @@
 {
   "name": "Eleve Odontologia",
-  "description": "Site profissional e de alta conversão para a Clínica Eleve Odontologia em Belo Horizonte, focado em SEO local e captação de pacientes via WhatsApp.",
-  "requestFramePermissions": []
+  "description": "Clínica de Odontologia de Alta Performance em Belo Horizonte (Ouro Preto e Castelo). Cirurgia Ortognática, Implantes Guiados e Ortodontia Digital com páginas completas de Início, Sobre Nós, Tratamentos e Contato.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

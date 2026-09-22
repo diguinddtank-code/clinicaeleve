@@ -20,6 +20,7 @@ export const IMAGES = {
   drAndre: "https://i.imgur.com/us1azR4.png",
   draAna: "https://i.imgur.com/9esPUGw.png",
   doctorsTeam: "https://i.imgur.com/CsXFZCz.png", 
+  clinic: "https://i.imgur.com/xEHLSXb.png",
   clinic1: "https://i.imgur.com/xEHLSXb.png",
   clinic2: "https://i.imgur.com/41386jO.png",
   heroBg: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=2000",
