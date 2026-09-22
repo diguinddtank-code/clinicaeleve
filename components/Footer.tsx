@@ -1,6 +1,7 @@
 import React from 'react';
 import { IMAGES, ADDRESS, PHONE_DISPLAY, DR_ANDRE_INSTAGRAM, DR_ANA_INSTAGRAM } from '../constants';
 import { Instagram, MapPin, Phone, Mail, Award, Clock } from 'lucide-react';
+import { getPathForSubpage } from '../seo';
 
 interface FooterProps {
   onNavigate?: (page: 'home' | 'about' | 'contact' | 'treatments', sectionId?: string) => void;
@@ -11,14 +12,14 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
     if (onNavigate) {
       onNavigate(page, sectionId);
     } else {
-      if (page === 'about') {
-        window.location.hash = '#sobre';
-      } else if (page === 'contact') {
-        window.location.hash = '#contato';
-      } else if (page === 'treatments') {
-        window.location.hash = '#tratamentos';
+      const path = getPathForSubpage(page);
+      if (page === 'home' && sectionId && sectionId !== 'home') {
+        window.history.pushState({ page, sectionId }, '', `/#${sectionId}`);
+        const el = document.getElementById(sectionId);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
       } else {
-        window.location.hash = sectionId ? `#${sectionId}` : '#home';
+        window.history.pushState({ page }, '', path);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
   };
@@ -166,7 +167,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     onClick={() => handleNav('treatments')} 
                     className="hover:text-eleve-gold transition-colors text-left cursor-pointer"
                   >
-                    Endodontia Microscópica Indolor
+                    Aparelhos Autoligados & Safira
                   </button>
                 </li>
                 <li>

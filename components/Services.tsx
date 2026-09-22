@@ -65,15 +65,15 @@ const services = [
     ]
   },
   {
-    title: "Endodontia (Canal)",
-    desc: "Tratamento de canal automatizado (rotatório). Mais rápido, preciso e sem dor.",
-    image: IMAGES.serviceEndo,
-    feature: "Microscopia",
+    title: "Aparelhos Autoligados & Safira",
+    desc: "Braquetes translúcidos de alta performance. Movimentação biológica rápida, sem atrito e sem borrachinhas que mancham.",
+    image: IMAGES.serviceOrto,
+    feature: "Safira Pura",
     benefits: [
-      "Alívio imediato da dor de dente",
-      "Tecnologia rotatória (mais rápido)",
-      "Uso de microscópio para precisão",
-      "Salva o dente natural"
+      "Braquetes estéticos transparentes de safira",
+      "Não mancha com café, vinho ou alimentos",
+      "Menor atrito e movimentação rápida",
+      "Consultas mais espaçadas e confortáveis"
     ]
   }
 ];
@@ -264,7 +264,9 @@ const Services: React.FC<ServicesProps> = ({ onViewAllTreatments }) => {
               if (onViewAllTreatments) {
                 onViewAllTreatments();
               } else {
-                window.location.hash = '#tratamentos';
+                window.history.pushState({ page: 'treatments' }, '', '/tratamentos');
+                window.dispatchEvent(new PopStateEvent('popstate'));
+                window.scrollTo({ top: 0, behavior: 'smooth' });
               }
             }}
             className="inline-flex items-center gap-3 px-8 py-4 bg-eleve-black hover:bg-eleve-brand text-white font-bold uppercase tracking-wider text-xs rounded-sm transition-all shadow-md cursor-pointer"

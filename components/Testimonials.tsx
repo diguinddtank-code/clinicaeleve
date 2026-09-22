@@ -23,8 +23,8 @@ const testimonials = [
   },
   {
     name: "Carlos Eduardo",
-    text: "Fiz canal sem sentir dor nenhuma. A tecnologia que eles usam é impressionante. Parabéns à toda equipe da Eleve.",
-    treatment: "Endodontia",
+    text: "Coloquei o aparelho autoligado estético e o resultado foi muito mais rápido do que imaginei, sem dor e super discreto. Equipe nota 10!",
+    treatment: "Ortodontia Estética",
     time: "há 2 meses"
   },
   {

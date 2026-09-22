@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Sparkles, 
   ArrowRight, 
   ArrowDown,
   ArrowUp,
@@ -28,6 +27,7 @@ import {
   DR_ANA_INSTAGRAM,
   PHONE_DISPLAY 
 } from '../constants';
+import { updatePageSeo } from '../seo';
 
 interface TreatmentsPageProps {
   onNavigateHome: (sectionId?: string) => void;
@@ -92,28 +92,10 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({
     }
   };
 
-  // SEO dinâmico
+  // Scroll para o topo e ativação de SEO e Schemas da subpágina de Tratamentos
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    const originalTitle = document.title;
-    document.title = 'Tratamentos e Cirurgias Especializadas | Eleve Odontologia BH';
-
-    const metaDescription = document.querySelector('meta[name="description"]');
-    const prevDesc = metaDescription?.getAttribute('content') || '';
-    if (metaDescription) {
-      metaDescription.setAttribute(
-        'content',
-        'Conheça todos os tratamentos da Eleve Odontologia em Belo Horizonte. Cirurgia Ortognática, Implantes Guiados 3D, Invisalign, Extração de Sisos e Endodontia com sedação.'
-      );
-    }
-
-    return () => {
-      document.title = originalTitle;
-      if (metaDescription) {
-        metaDescription.setAttribute('content', prevDesc);
-      }
-    };
+    updatePageSeo('treatments');
   }, []);
 
   const treatmentsData: TreatmentItem[] = [
@@ -122,12 +104,12 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({
       category: 'cirurgia',
       title: 'Cirurgia Ortognática 3D',
       subtitle: 'Correção de deformidades da face, mordida cruzada e apneia obstrutiva do sono',
-      tag: 'Alta Complexidade Cirúrgica',
+      tag: 'Cirurgia Avançada',
       doctor: 'Dr. André Araújo',
       doctorTitle: 'Cirurgião Buco-Maxilo-Facial (Residência Hospitalar Dr. Mário Gatti)',
       doctorImg: IMAGES.drAndre,
       doctorInstagram: DR_ANDRE_INSTAGRAM,
-      badge: 'Planejamento Virtual Guiado',
+      badge: 'Planejamento 3D',
       shortDesc: 'Alinhamento esquelético dos maxilares com simulação pré-operatória em 3D, restabelecendo a mastigação, a respiração e a harmonia do perfil facial.',
       fullDesc: 'A Cirurgia Ortognática é indicada para pacientes com discrepâncias ósseas que não podem ser resolvidas apenas com aparelho ortodôntico convencional. Na Eleve, todo o caso é planejado virtualmente através de tomografias computadorizadas e softwares de simulação cirúrgica. Isso nos permite antecipar milimetricamente os movimentos ósseos, encurtar o tempo cirúrgico e proporcionar uma recuperação muito mais segura.',
       indications: [
@@ -153,12 +135,12 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({
       category: 'cirurgia',
       title: 'Implantes Dentários Guiados',
       subtitle: 'Substituição definitiva de dentes perdidos com cirurgia guiada por computador',
-      tag: 'Reabilitação Oral Definitiva',
+      tag: 'Implantes & Próteses',
       doctor: 'Dr. André Araújo',
       doctorTitle: 'Especialista em Implantodontia e Reconstrução Óssea',
       doctorImg: IMAGES.drAndre,
       doctorInstagram: DR_ANDRE_INSTAGRAM,
-      badge: 'Sem Cortes Extensos',
+      badge: 'Cirurgia Guiada',
       shortDesc: 'Instalação de implantes através de guias cirúrgicos impressos em 3D, reduzindo o sangramento, a dor e acelerando a osseointegração.',
       fullDesc: 'Diferente da técnica tradicional de corte gengival livre, o implante guiado por computador é posicionado com precisão tridimensional através de uma guia personalizada milimétrica. O procedimento é extremamente rápido, muitas vezes sem necessidade de incisões extensas nem pontos cirúrgicos convencionais, permitindo que você retorne à rotina com o mínimo de desconforto.',
       indications: [
@@ -183,12 +165,12 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({
       category: 'cirurgia',
       title: 'Extração Segura de Sisos Inclusos',
       subtitle: 'Cirurgia orofacial minimamente invasiva para dentes do siso inclusos ou impactados',
-      tag: 'Prevenção & Cirurgia Oral',
+      tag: 'Cirurgia de Sisos',
       doctor: 'Dr. André Araújo',
       doctorTitle: 'Cirurgião Buco-Maxilo-Facial',
       doctorImg: IMAGES.drAndre,
       doctorInstagram: DR_ANDRE_INSTAGRAM,
-      badge: 'Técnica Atraumática',
+      badge: 'Atraumática',
       shortDesc: 'Remoção precisa de terceiros molares com preservação óssea, instrumentação cirúrgica delicada e controle rigoroso de edema e dor.',
       fullDesc: 'O siso retido ou impactado pode pressionar as raízes dos dentes vizinhos, causar cistos patológicos, infecções agudas (pericoronarite) e dores de cabeça constantes. Na Eleve, a cirurgia é realizada por cirurgião bucomaxilo especialista, com planejamento radiográfico e tomográfico que mapeia exatamente o nervo alveolar inferior, prevenindo dormências ou lesões nervosas.',
       indications: [
@@ -213,12 +195,12 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({
       category: 'ortodontia',
       title: 'Invisalign & Ortodontia Digital',
       subtitle: 'Alinhadores transparentes sob medida sem braquetes metálicos nem desconforto',
-      tag: 'Ortodontia de Alta Estética',
+      tag: 'Ortodontia Digital',
       doctor: 'Dra. Ana Luiza',
       doctorTitle: 'Invisalign Doctor, Mestre e Pós-Graduada pela UFMG',
       doctorImg: IMAGES.draAna,
       doctorInstagram: DR_ANA_INSTAGRAM,
-      badge: 'Fluxo 100% Digital',
+      badge: '100% Digital',
       shortDesc: 'Tecnologia ortodôntica americana com alinhadores invisíveis, previsibilidade virtual do sorriso e sem restrições alimentares.',
       fullDesc: 'Conduzido pela Dra. Ana Luiza, o tratamento com alinhadores transparentes Invisalign representa o ápice da conveniência e da estética dental. Através do escaneamento intraoral tridimensional, eliminamos completamente as moldagens de gesso antigas. Você visualiza na tela cada etapa da movimentação dentária antes mesmo de começar a usar a primeira placa alinhadora.',
       indications: [
@@ -239,46 +221,47 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({
       whatsappMessage: 'Olá! Gostaria de agendar uma consulta para alinhadores Invisalign com a Dra. Ana Luiza.'
     },
     {
-      id: 'endodontia',
-      category: 'reabilitacao',
-      title: 'Endodontia Microscópica (Canal Indolor)',
-      subtitle: 'Salvamento de dentes comprometidos com magnificação microscópica e sessão única',
-      tag: 'Preservação Biológica',
+      id: 'autoligado',
+      category: 'ortodontia',
+      title: 'Aparelhos Autoligados & Safira Estética',
+      subtitle: 'Alinhamento dental avançado com braquetes de cristal de safira e tecnologia autoligada sem atrito',
+      tag: 'Ortodontia Fixa',
       doctor: 'Dra. Ana Luiza',
-      doctorTitle: 'Especialista em Endodontia e Microcirurgia Pulpar',
+      doctorTitle: 'Ortodontista, Mestre e Pós-Graduada pela UFMG',
       doctorImg: IMAGES.draAna,
       doctorInstagram: DR_ANA_INSTAGRAM,
-      badge: 'Tecnologia Microscópica',
-      shortDesc: 'Tratamento de canal preciso com instrumentos de níquel titânio rotatórios, desinfecção profunda e alívio imediato da dor.',
-      fullDesc: 'O tratamento de canal na Eleve não tem relação com as experiências dolorosas do passado. Utilizando microscópio clínico e localizadores eletrônicos de precisão micrométrica, a Dra. Ana Luiza acessa canais anatômicos complexos, remove bactérias invisíveis a olho nu e conclui a maior parte dos procedimentos em uma única sessão confortável e absolutamente indolor.',
+      badge: 'Safira Pura',
+      shortDesc: 'Braquetes translúcidos de safira e sistemas autoligados que proporcionam movimentação rápida e biológica sem borrachinhas manchadas.',
+      fullDesc: 'Para pacientes que buscam a eficácia consagrada da ortodontia fixa com a máxima discrição estética, a Dra. Ana Luiza trabalha com sistemas autoligados e braquetes de cristal de safira. Diferente dos aparelhos metálicos ou cerâmicos convencionais, os braquetes de safira são translúcidos e não amarelam com café, vinho ou alimentos pigmentados. A tecnologia autoligada elimina as ligaduras elásticas, reduzindo o atrito e permitindo consultas de manutenção mais espaçadas e tratamentos muito mais confortáveis.',
       indications: [
-        'Dor de dente aguda, pulsátil ou sensibilidade severa ao calor e ao frio',
-        'Necrose da polpa dentária decorrente de cárie profunda ou trauma físico',
-        'Sensação de dente alto ao mastigar e inchaço na gengiva apical',
-        'Necessidade de retratamento de canal antigo com infecção persistente'
+        'Desalinhamentos moderados a severos que necessitam de controle tridimensional contínuo',
+        'Fechamento de diastemas (espaços) e correção de apinhamentos dentários acentuados',
+        'Mordida cruzada, mordida profunda ou mordida aberta esquelética',
+        'Preparo ortodôntico de nivelamento prévio para Cirurgia Ortognática',
+        'Pacientes que buscam a precisão do aparelho fixo com discrição estética total'
       ],
       differentials: [
-        'Magnificação com microscópio cirúrgico para enxergar canais extras e istmos',
-        'Instrumentação rotatória e reciprocante que reduz o tempo na cadeira em mais de 50%',
-        'Localizador apical eletrônico dispensando excesso de radiografias',
-        'Conclusão frequente em sessão única sem retornos intermináveis'
+        'Braquetes de safira monocristalina transparentes que se fundem à cor do esmalte',
+        'Mecanismo autoligado de baixo atrito, promovendo movimentação mais rápida e biológica',
+        'Consultas de ativação com intervalos maiores (a cada 6 a 8 semanas)',
+        'Higienização muito mais simples pela ausência de elásticos que retêm placa bacteriana'
       ],
-      techUsed: ['Microscópio Óptico Operatório', 'Motores Endodônticos Inteligentes', 'Sistemas de Irrigação Ultrassônica', 'Guta-Percha Termoplastificada'],
-      recoveryTime: 'Alívio da dor na hora; sensibilidade leve e temporária de 24h na mastigação',
-      anesthesiaType: 'Anestesia computadorizada de alta eficácia com efeito imediato',
-      whatsappMessage: 'Olá! Preciso de avaliação para tratamento de canal (Endodontia) com a Dra. Ana Luiza.'
+      techUsed: ['Braquetes de Cristal de Safira', 'Fios Termoativados com Memória de Forma', 'Mapeamento Digital Oclusal', 'Fotografia Odontológica Digital'],
+      recoveryTime: 'Adaptação confortável em 3 a 5 dias; alimentação normal sem incômodos',
+      anesthesiaType: 'Procedimento não invasivo de colagem de braquetes, sem dor e sem anestesia',
+      whatsappMessage: 'Olá! Gostaria de solicitar uma avaliação para Aparelhos Autoligados e Safira com a Dra. Ana Luiza.'
     },
     {
       id: 'clareamento',
       category: 'estetica',
       title: 'Clareamento Dental & Estética Integrada',
       subtitle: 'Protocolos supervisionados de alta durabilidade com proteção do esmalte e sem sensibilidade',
-      tag: 'Estética & Luminosidade',
+      tag: 'Estética Dental',
       doctor: 'Dra. Ana Luiza',
       doctorTitle: 'Ortodontista e Especialista em Harmonia do Sorriso',
       doctorImg: IMAGES.draAna,
       doctorInstagram: DR_ANA_INSTAGRAM,
-      badge: 'Com Dessensibilizante',
+      badge: 'Sem Sensibilidade',
       shortDesc: 'Combinação refinada de clareamento no consultório e moldeiras personalizadas com géis de liberação controlada.',
       fullDesc: 'O clareamento na Eleve é planejado para clarear os pigmentos internos da dentina sem agredir a estrutura do esmalte. Aplicamos protocolos avançados com barreira gengival de fotopolimerização e agentes neutralizadores de sensibilidade, permitindo dentes naturalmente brancos, luminosos e com tonalidade estável ao longo do tempo.',
       indications: [
@@ -303,12 +286,12 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({
       category: 'reabilitacao',
       title: 'Enxertos Ósseos & Reconstrução Alveolar',
       subtitle: 'Regeneração óssea tecidual guiada para viabilizar implantes em áreas com atrofia',
-      tag: 'Cirurgia Reconstrutiva',
+      tag: 'Enxerto Ósseo',
       doctor: 'Dr. André Araújo',
       doctorTitle: 'Cirurgião Buco-Maxilo-Facial e Implantodontista',
       doctorImg: IMAGES.drAndre,
       doctorInstagram: DR_ANDRE_INSTAGRAM,
-      badge: 'Biomateriais de Referência',
+      badge: 'Biomateriais',
       shortDesc: 'Reconstrução de volume ósseo perdido com biomateriais certificados, membranas de colágeno e bioengenharia tecidual.',
       fullDesc: 'Quando um dente é perdido há muitos anos, o osso da mandíbula ou maxila sofre um processo natural de reabsorção e afinamento. Para que o implante dentário tenha estabilidade e longevidade de décadas, o Dr. André Araújo realiza a reconstrução de espessura e altura através de enxertos ósseos com membranas biocompatíveis e técnicas cirúrgicas comprovadas pela literatura científica mundial.',
       indications: [
@@ -415,10 +398,9 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({
           </nav>
 
           <div className="max-w-3xl space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-              <Sparkles size={14} className="text-eleve-gold" />
-              <span className="text-xs uppercase tracking-[0.25em] font-bold text-eleve-gold">
-                Procedimentos de Alta Performance
+            <div className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+              <span className="text-[11px] sm:text-xs uppercase tracking-wider font-semibold text-eleve-gold whitespace-nowrap">
+                Procedimentos
               </span>
             </div>
 
@@ -438,7 +420,7 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({
               { id: 'todos', label: 'Todos os Procedimentos' },
               { id: 'cirurgia', label: 'Cirurgias & Implantes' },
               { id: 'ortodontia', label: 'Ortodontia Digital' },
-              { id: 'reabilitacao', label: 'Reabilitação & Canal' },
+              { id: 'reabilitacao', label: 'Reabilitação & Enxertos' },
               { id: 'estetica', label: 'Estética & Clareamento' }
             ].map(cat => (
               <button
@@ -499,7 +481,7 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({
                     }`}
                   >
                     <div className="flex items-center justify-between gap-3 mb-2.5">
-                      <span className={`text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md shrink-0 ${
+                      <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md shrink-0 whitespace-nowrap ${
                         isSelected ? 'bg-eleve-gold text-eleve-black' : 'bg-stone-100 text-slate-600'
                       }`}>
                         {t.tag}
@@ -567,11 +549,11 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({
               
               {/* Header do Dossiê */}
               <div className="border-b border-gray-100 pb-8 space-y-4">
-                <div className="flex flex-wrap items-center gap-3">
-                  <span className="text-xs font-bold uppercase tracking-widest text-eleve-brand px-3 py-1 rounded-full bg-eleve-brand/10 border border-eleve-brand/20">
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <span className="text-xs font-bold uppercase tracking-wider text-eleve-brand px-3 py-1 rounded-full bg-eleve-brand/10 border border-eleve-brand/20 whitespace-nowrap">
                     {activeTreatment.tag}
                   </span>
-                  <span className="text-xs font-bold uppercase tracking-widest text-eleve-gold px-3 py-1 rounded-full bg-amber-50 border border-amber-200">
+                  <span className="text-xs font-bold uppercase tracking-wider text-eleve-gold px-3 py-1 rounded-full bg-amber-50 border border-amber-200 whitespace-nowrap">
                     {activeTreatment.badge}
                   </span>
                 </div>
@@ -781,10 +763,9 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
             <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-eleve-brand/10 border border-eleve-brand/20">
-                <ShieldCheck size={16} className="text-eleve-brand" />
-                <span className="text-xs uppercase tracking-widest font-bold text-eleve-brand">
-                  Conforto Absoluto Sem Traumas
+              <div className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-eleve-brand/10 border border-eleve-brand/20">
+                <span className="text-[11px] sm:text-xs uppercase tracking-wider font-semibold text-eleve-brand whitespace-nowrap">
+                  Sedação Consciente
                 </span>
               </div>
 

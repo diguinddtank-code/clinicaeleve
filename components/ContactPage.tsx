@@ -11,7 +11,6 @@ import {
   ChevronRight, 
   MessageSquare, 
   ShieldAlert, 
-  Sparkles, 
   Navigation, 
   Car, 
   FileText, 
@@ -28,6 +27,7 @@ import {
   DR_ANDRE_INSTAGRAM,
   DR_ANA_INSTAGRAM
 } from '../constants';
+import { updatePageSeo } from '../seo';
 
 interface ContactPageProps {
   onNavigateHome: (sectionId?: string) => void;
@@ -45,28 +45,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigateHome, onNavi
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
-  // SEO dinâmico ao entrar na página de Contato
+  // Scroll para o topo e ativação de SEO e Schemas da subpágina de Contato
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    const originalTitle = document.title;
-    document.title = 'Contato e Agendamento | Eleve Odontologia BH | Ouro Preto e Castelo';
-
-    const metaDescription = document.querySelector('meta[name="description"]');
-    const prevDesc = metaDescription?.getAttribute('content') || '';
-    if (metaDescription) {
-      metaDescription.setAttribute(
-        'content',
-        'Entre em contato com a clínica Eleve Odontologia em Belo Horizonte. Agendamento exclusivo com Dr. André Araújo e Dra. Ana Luiza na Rua Sena Madureira, 491, Ouro Preto.'
-      );
-    }
-
-    return () => {
-      document.title = originalTitle;
-      if (metaDescription) {
-        metaDescription.setAttribute('content', prevDesc);
-      }
-    };
+    updatePageSeo('contact');
   }, []);
 
   const toggleFaq = (index: number) => {
@@ -100,7 +82,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigateHome, onNavi
     'Implantes Dentários & Enxertos Ósseos',
     'Extração de Sisos Inclusos',
     'Invisalign & Ortodontia Digital',
-    'Endodontia (Canal) Microscópica',
+    'Aparelhos Autoligados & Safira Estética',
     'Clareamento & Estética Dental',
     'Avaliação Clínica Geral'
   ];
@@ -164,10 +146,9 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigateHome, onNavi
           </nav>
 
           <div className="max-w-3xl space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-              <Sparkles size={14} className="text-eleve-gold" />
-              <span className="text-xs uppercase tracking-[0.25em] font-bold text-eleve-gold">
-                Recepção & Concierge Clínico
+            <div className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+              <span className="text-[11px] sm:text-xs uppercase tracking-wider font-semibold text-eleve-gold whitespace-nowrap">
+                Atendimento
               </span>
             </div>
 
@@ -452,7 +433,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigateHome, onNavi
                       Dra. Ana Luiza
                     </p>
                     <p className="text-xs text-slate-600 mt-0.5">
-                      Invisalign Doctor, Endodontia Microscópica e Estética Dental
+                      Invisalign Doctor, Ortodontia Autoligada e Estética Dental
                     </p>
                   </a>
 

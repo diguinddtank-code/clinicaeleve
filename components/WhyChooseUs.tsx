@@ -44,16 +44,14 @@ const CustomIcons = {
       <path d="M19 4L17 8" className="opacity-50" />
     </svg>
   ),
-  Microscope: () => (
+  Aligners: () => (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M10 21H14" />
-      <path d="M12 17V21" />
-      <path d="M9 14H15L16 17H8L9 14Z" />
-      <path d="M12 11V14" />
-      <path d="M12 11C13.6569 11 15 9.65685 15 8V3H9V8C9 9.65685 10.3431 11 12 11Z" />
-      <path d="M15 3H20V5" />
-      <path d="M20 5C20 9 17 11 17 11" />
-      <circle cx="12" cy="8" r="2" className="opacity-30" />
+      <path d="M4 14c2-5 6-8 8-8s6 3 8 8" />
+      <path d="M6 14.5c1.8-3.5 4-5.5 6-5.5s4.2 2 6 5.5" className="opacity-40" />
+      <circle cx="8" cy="13" r="1.5" />
+      <circle cx="12" cy="11" r="1.5" />
+      <circle cx="16" cy="13" r="1.5" />
+      <path d="M7 19c2-1 4-1.5 5-1.5s3 .5 5 1.5" className="opacity-50" />
     </svg>
   )
 };
@@ -85,9 +83,9 @@ const reasons = [
     text: "Protocolos de esterilização hospitalar. Sua saúde é prioridade absoluta."
   },
   {
-    icon: <CustomIcons.Microscope />,
-    title: "Microscopia",
-    text: "Tratamentos de canal e estética com magnificação para maior longevidade."
+    icon: <CustomIcons.Aligners />,
+    title: "Ortodontia Digital",
+    text: "Alinhadores transparentes e aparelhos estéticos com planejamento virtual 3D."
   }
 ];
 

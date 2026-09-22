@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { IMAGES, WHATSAPP_LINK } from '../constants';
+import { getPathForSubpage } from '../seo';
 
 interface NavbarProps {
   currentPage?: 'home' | 'about' | 'contact' | 'treatments';
@@ -33,14 +34,14 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage = 'home', onNavigate }) => 
     if (onNavigate) {
       onNavigate(page, sectionId);
     } else {
-      if (page === 'home') {
-        window.location.hash = sectionId ? `#${sectionId}` : '#home';
-      } else if (page === 'about') {
-        window.location.hash = '#sobre';
-      } else if (page === 'contact') {
-        window.location.hash = '#contato';
-      } else if (page === 'treatments') {
-        window.location.hash = '#tratamentos';
+      const path = getPathForSubpage(page);
+      if (page === 'home' && sectionId && sectionId !== 'home') {
+        window.history.pushState({ page, sectionId }, '', `/#${sectionId}`);
+        const el = document.getElementById(sectionId);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.history.pushState({ page }, '', path);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
   };

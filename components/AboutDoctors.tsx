@@ -140,11 +140,11 @@ const AboutDoctors: React.FC<AboutDoctorsProps> = ({ onViewFullAbout }) => {
                             <div className="flex flex-col md:flex-row-reverse md:items-center gap-3 mb-2 lg:justify-start">
                                 <h3 className="text-3xl md:text-4xl lg:text-5xl font-serif text-eleve-black font-bold">Dra. Ana Luiza</h3>
                             </div>
-                            <p className="text-eleve-gold font-bold tracking-wider text-sm lg:text-base uppercase">Ortodontista & Endodontista</p>
+                            <p className="text-eleve-gold font-bold tracking-wider text-sm lg:text-base uppercase">Ortodontista • Invisalign Doctor</p>
                         </div>
                         
                         <p className="text-slate-700 text-base md:text-lg lg:text-xl leading-relaxed font-medium text-justify lg:text-right">
-                            Delicadeza e perfeccionismo definem o trabalho da Dra. Ana. Especialista em harmonizar sorrisos através da ortodontia digital e salvar dentes com endodontia (canal) microscópica e indolor.
+                            Delicadeza e perfeccionismo definem o trabalho da Dra. Ana. Especialista em harmonizar sorrisos através da ortodontia digital, alinhadores transparentes (Invisalign) e aparelhos autoligados de alta estética.
                         </p>
 
                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm lg:text-base text-gray-900 font-semibold lg:justify-items-end">
@@ -154,7 +154,7 @@ const AboutDoctors: React.FC<AboutDoctorsProps> = ({ onViewFullAbout }) => {
                              </div>
                              <div className="flex items-start gap-3 lg:flex-row-reverse text-left lg:text-right p-3 bg-white rounded-lg border border-gray-100 shadow-sm">
                                 <CheckCircle2 size={20} className="text-eleve-gold mt-0.5 shrink-0" />
-                                <span>Especialista em Endodontia</span>
+                                <span>Aparelhos Autoligados & Safira</span>
                              </div>
                              <div className="flex items-start gap-3 lg:flex-row-reverse text-left lg:text-right p-3 bg-white rounded-lg border border-gray-100 shadow-sm">
                                 <CheckCircle2 size={20} className="text-eleve-gold mt-0.5 shrink-0" />
@@ -214,7 +214,9 @@ const AboutDoctors: React.FC<AboutDoctorsProps> = ({ onViewFullAbout }) => {
               if (onViewFullAbout) {
                 onViewFullAbout();
               } else {
-                window.location.hash = '#sobre';
+                window.history.pushState({ page: 'about' }, '', '/sobre');
+                window.dispatchEvent(new PopStateEvent('popstate'));
+                window.scrollTo({ top: 0, behavior: 'smooth' });
               }
             }}
             className="z-10 inline-flex items-center gap-3 px-8 py-4 bg-eleve-gold hover:bg-eleve-goldLight text-eleve-black font-bold uppercase tracking-wider text-xs rounded-sm transition-all shadow-lg shrink-0 cursor-pointer"

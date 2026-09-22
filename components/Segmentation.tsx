@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Activity, Smile, Settings, Sparkles, ArrowRight, ChevronRight } from 'lucide-react';
+import { Activity, Smile, Settings, Gem, ArrowRight, ChevronRight } from 'lucide-react';
 import { WHATSAPP_DOR, WHATSAPP_ESTETICA, WHATSAPP_IMPLANTE, WHATSAPP_APARELHO } from '../constants';
 
 const Segmentation: React.FC = () => {
@@ -37,7 +37,7 @@ const Segmentation: React.FC = () => {
       isEmergency: false
     },
     {
-      icon: <Sparkles size={24} />,
+      icon: <Gem size={24} />,
       title: "Estética",
       subtitle: "Lentes/Clareamento",
       link: WHATSAPP_ESTETICA,

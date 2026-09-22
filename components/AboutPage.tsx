@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Award, 
   ShieldCheck, 
-  Sparkles, 
   Clock, 
   MapPin, 
   CheckCircle2, 
@@ -11,7 +10,7 @@ import {
   ChevronRight, 
   Instagram, 
   Building2, 
-  Microscope, 
+  Layers, 
   Scan, 
   HeartHandshake, 
   Users, 
@@ -29,6 +28,7 @@ import {
   ADDRESS, 
   PHONE_DISPLAY 
 } from '../constants';
+import { updatePageSeo } from '../seo';
 
 interface AboutPageProps {
   onNavigateHome: (sectionId?: string) => void;
@@ -39,29 +39,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigateHome, onNavigate
   const [activeDoctorTab, setActiveDoctorTab] = useState<'andre' | 'ana'>('andre');
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
-  // Scroll para o topo ao carregar a página
+  // Scroll para o topo e ativação de SEO e Schemas da subpágina Sobre
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    
-    // Atualização dinâmica de SEO para a página Sobre Nós
-    const originalTitle = document.title;
-    document.title = 'Sobre a Eleve Odontologia | Corpo Clínico e História em BH';
-    
-    const metaDescription = document.querySelector('meta[name="description"]');
-    const prevDesc = metaDescription?.getAttribute('content') || '';
-    if (metaDescription) {
-      metaDescription.setAttribute(
-        'content',
-        'Conheça a história da Eleve Odontologia em Belo Horizonte. Corpo clínico titular com Dr. André Araújo e Dra. Ana Luiza, estrutura cirúrgica hospitalar e odontologia 3D.'
-      );
-    }
-
-    return () => {
-      document.title = originalTitle;
-      if (metaDescription) {
-        metaDescription.setAttribute('content', prevDesc);
-      }
-    };
+    updatePageSeo('about');
   }, []);
 
   const toggleFaq = (index: number) => {
@@ -138,9 +119,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigateHome, onNavigate
       desc: 'Diga adeus às incômodas moldagens com massa e ânsia. Nosso scanner óptico cria um modelo tridimensional colorido e perfeito da sua boca em menos de três minutos.'
     },
     {
-      icon: Microscope,
-      title: 'Endodontia Microscópica de Alta Definição',
-      desc: 'Tratamentos de canal executados com microscopia clínica, garantindo a localização de canais atípicos e a máxima preservação da estrutura dental natural.'
+      icon: Layers,
+      title: 'Ortodontia Digital & Planejamento ClinCheck',
+      desc: 'Simulação virtual 3D de cada movimentação dentária com alinhadores transparentes e aparelhos estéticos. Você visualiza a evolução do seu novo sorriso antes mesmo de iniciar o tratamento.'
     },
     {
       icon: ShieldCheck,
@@ -209,10 +190,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigateHome, onNavigate
             {/* Texto Principal */}
             <div className="lg:col-span-7 space-y-8">
               
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-                <Sparkles size={14} className="text-eleve-gold" />
-                <span className="text-xs uppercase tracking-[0.25em] font-bold text-eleve-gold">
-                  Manifesto Institucional
+              <div className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+                <span className="text-[11px] sm:text-xs uppercase tracking-wider font-semibold text-eleve-gold whitespace-nowrap">
+                  Sobre a Eleve
                 </span>
               </div>
 
@@ -544,12 +524,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigateHome, onNavigate
                     <div className="relative w-full max-w-md aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
                       <img 
                         src={IMAGES.draAna} 
-                        alt="Dra. Ana Luiza - Ortodontista e Endodontista" 
+                        alt="Dra. Ana Luiza - Ortodontista e Invisalign Doctor" 
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-eleve-black/90 via-transparent to-transparent flex flex-col justify-end p-8 text-white">
                         <span className="text-eleve-gold text-xs uppercase tracking-widest font-bold">
-                          Ortodontia & Endodontia
+                          Ortodontia & Alinhadores
                         </span>
                         <h3 className="font-serif text-3xl font-bold">Dra. Ana Luiza</h3>
                         <p className="text-xs text-gray-300 mt-1 uppercase tracking-wider">
@@ -562,18 +542,18 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigateHome, onNavigate
                   <div className="lg:col-span-7 space-y-6">
                     <div>
                       <div className="inline-block bg-eleve-gold text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">
-                        Ortodontia Digital & Endodontia
+                        Ortodontia Digital & Alinhadores
                       </div>
                       <h3 className="text-3xl sm:text-4xl font-serif font-bold text-eleve-black">
                         Dra. Ana Luiza
                       </h3>
                       <p className="text-eleve-gold text-sm sm:text-base font-bold uppercase tracking-wider mt-1">
-                        Invisalign Doctor e Especialista em Endodontia Microscópica
+                        Invisalign Doctor e Especialista em Ortodontia (UFMG)
                       </p>
                     </div>
 
                     <p className="text-slate-700 text-base sm:text-lg leading-relaxed">
-                      Mestre e pós-graduada pela Universidade Federal de Minas Gerais (UFMG), a Dra. Ana Luiza destaca-se pelo trabalho milimétrico, refinamento estético e extrema delicadeza. Seu foco clínico está em alinhar dentes com discrição absoluta através da tecnologia Invisalign, além de preservar elementos dentários comprometidos por meio do tratamento de canal com microscopia operatória.
+                      Mestre e pós-graduada pela Universidade Federal de Minas Gerais (UFMG), a Dra. Ana Luiza destaca-se pelo trabalho milimétrico, refinamento estético e extrema delicadeza. Seu foco clínico está em alinhar dentes e harmonizar sorrisos com previsibilidade absoluta através da tecnologia Invisalign, aparelhos autoligados estéticos de safira e ortopedia facial.
                     </p>
 
                     <div className="border-l-2 border-eleve-brand pl-4 py-1 italic text-slate-800 text-sm sm:text-base bg-eleve-brand/5 rounded-r-lg">
@@ -595,7 +575,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigateHome, onNavigate
                         </div>
                         <div className="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-gray-200">
                           <CheckCircle2 size={16} className="text-eleve-gold shrink-0" />
-                          <span>Endodontia com Microscopia Operatória</span>
+                          <span>Aparelhos Autoligados & Safira Estética</span>
                         </div>
                         <div className="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-gray-200">
                           <CheckCircle2 size={16} className="text-eleve-gold shrink-0" />
@@ -617,7 +597,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigateHome, onNavigate
 
                       <a
                         href={`https://wa.me/553132347977?text=${encodeURIComponent(
-                          'Olá! Gostaria de agendar uma avaliação para Invisalign ou Endodontia com a Dra. Ana Luiza.'
+                          'Olá! Gostaria de agendar uma avaliação para Invisalign ou Ortodontia com a Dra. Ana Luiza.'
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"

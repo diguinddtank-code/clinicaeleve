@@ -32,9 +32,8 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="flex flex-col items-center"
         >
-            <div className="inline-flex items-center gap-2 border border-white/20 bg-white/5 backdrop-blur-sm px-4 py-1.5 rounded-full mb-6 mx-auto shadow-lg">
-                <Star size={12} className="text-eleve-gold fill-eleve-gold" />
-                <p className="text-white text-[10px] tracking-[0.2em] uppercase font-bold">
+            <div className="inline-flex items-center border border-white/20 bg-white/5 backdrop-blur-sm px-3.5 py-1.5 rounded-full mb-6 mx-auto shadow-lg">
+                <p className="text-white text-[10px] tracking-wider uppercase font-semibold whitespace-nowrap">
                     Ouro Preto & Castelo • BH
                 </p>
             </div>
