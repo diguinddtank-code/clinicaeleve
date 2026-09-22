@@ -4,7 +4,7 @@
  * Gerencia títulos, meta descriptions, canonicals, OpenGraph, Twitter Cards e JSON-LD dinâmicos por subpágina.
  */
 
-export type Subpage = 'home' | 'about' | 'treatments' | 'contact';
+export type Subpage = 'home' | 'about' | 'treatments' | 'contact' | 'drandre';
 
 export interface PageSeoConfig {
   path: string;
@@ -452,6 +452,74 @@ export const SEO_DATA: Record<Subpage, PageSeoConfig> = {
         }
       ]
     }
+  },
+  drandre: {
+    path: '/drandrearaujo',
+    title: 'Dr. André Araújo | Cirurgião Bucomaxilofacial e Implantodontista em BH',
+    description: 'Conheça o Dr. André Araújo (CRO-MG): Especialista em Cirurgia Buco-Maxilo-Facial (Residência Hosp. Dr. Mário Gatti) e Implantodontia. Referência em Cirurgia Ortognática 3D, Implantes Guiados e Sedação Consciente em BH.',
+    keywords: 'dr andre araujo bh, cirurgiao bucomaxilofacial bh, cirurgia ortognatica dr andre araujo, implante dentario ouro preto bh, extracao siso cirurgiao bucomaxilo bh, residencia hospital mario gatti andre araujo, dentista ouro preto castelo',
+    canonicalUrl: `${BASE_URL}/drandrearaujo`,
+    ogType: 'article',
+    ogTitle: 'Dr. André Araújo | Especialista em Cirurgia Bucomaxilofacial e Implantes em BH',
+    ogDescription: 'Residência Hospitalar Dr. Mário Gatti. Mais de 12 anos de experiência em Cirurgias Ortognáticas, Implantes Guiados sem cortes e Extração de Sisos com Sedação.',
+    ogImage: DR_ANDRE_IMG,
+    schema: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': ['Person', 'Physician'],
+          '@id': `${BASE_URL}/drandrearaujo#dr-andre`,
+          name: 'Dr. André Araújo',
+          jobTitle: 'Cirurgião Buco-Maxilo-Facial e Implantodontista',
+          worksFor: {
+            '@id': `${BASE_URL}/#clinic`,
+            name: 'Eleve Odontologia'
+          },
+          image: DR_ANDRE_IMG,
+          description: 'Especialista e Residente em Cirurgia e Traumatologia Buco-Maxilo-Facial pelo Hospital Municipal Dr. Mário Gatti. Especialista em Implantodontia e Cirurgia Ortognática 3D com fluxo 100% digital.',
+          alumniOf: [
+            {
+              '@type': 'EducationalOrganization',
+              name: 'Hospital Municipal Dr. Mário Gatti'
+            }
+          ],
+          medicalSpecialty: [
+            'Oral and Maxillofacial Surgery',
+            'Dental Implants',
+            'Dentistry'
+          ],
+          knowsAbout: [
+            'Cirurgia Ortognática 3D',
+            'Implantes Dentários Guiados',
+            'Extração Minimamente Invasiva de Sisos Inclusos',
+            'Sedação Consciente com Anestesiologista',
+            'Enxertos Ósseos e Levantamento de Seio Maxilar',
+            'Tratamento de Disfunção de ATM'
+          ],
+          sameAs: [
+            'https://www.instagram.com/andrearaujobmf/'
+          ],
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: 'Rua Sena Madureira, 491',
+            addressLocality: 'Belo Horizonte',
+            addressRegion: 'MG',
+            postalCode: '31330-000',
+            addressCountry: 'BR'
+          }
+        },
+        {
+          '@type': 'MedicalWebPage',
+          '@id': `${BASE_URL}/drandrearaujo`,
+          url: `${BASE_URL}/drandrearaujo`,
+          name: 'Dr. André Araújo - Cirurgia Buco-Maxilo-Facial & Implantes em Belo Horizonte',
+          description: 'Perfil profissional, qualificações clínicas, procedimentos cirúrgicos e depoimentos do Dr. André Araújo na Eleve Odontologia.',
+          author: {
+            '@id': `${BASE_URL}/drandrearaujo#dr-andre`
+          }
+        }
+      ]
+    }
   }
 };
 
@@ -523,6 +591,15 @@ export const getSubpageFromPath = (
   const cleanPath = pathname.replace(/\/+$/, '').toLowerCase();
 
   // Rotas canônicas de subpágina
+  if (
+    cleanPath === '/drandrearaujo' ||
+    cleanPath === '/dr-andre-araujo' ||
+    cleanPath === '/draandrearaujo' ||
+    cleanPath === '/dr-andre' ||
+    cleanPath === '/drandre'
+  ) {
+    return { page: 'drandre' };
+  }
   if (cleanPath === '/sobre' || cleanPath === '/sobre-nos' || cleanPath === '/about') {
     return { page: 'about' };
   }
@@ -538,8 +615,17 @@ export const getSubpageFromPath = (
     return { page: 'contact' };
   }
 
-  // Compatibilidade com navegação legada por hash (ex.: #sobre, #tratamentos, #contato)
+  // Compatibilidade com navegação legada por hash (ex.: #drandrearaujo, #sobre, #tratamentos, #contato)
   const cleanHash = hash.replace(/^#/, '').toLowerCase();
+  if (
+    cleanHash === 'drandrearaujo' ||
+    cleanHash === 'dr-andre-araujo' ||
+    cleanHash === 'draandrearaujo' ||
+    cleanHash === 'drandre' ||
+    cleanHash === 'dr-andre'
+  ) {
+    return { page: 'drandre' };
+  }
   if (cleanHash === 'sobre' || cleanHash === 'sobrenos' || cleanHash === 'about') {
     return { page: 'about' };
   }
@@ -565,6 +651,8 @@ export const getSubpageFromPath = (
 
 export const getPathForSubpage = (page: Subpage): string => {
   switch (page) {
+    case 'drandre':
+      return '/drandrearaujo';
     case 'about':
       return '/sobre';
     case 'treatments':

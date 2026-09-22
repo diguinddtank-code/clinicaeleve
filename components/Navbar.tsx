@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Phone, MapPin, Calendar, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IMAGES, WHATSAPP_LINK } from '../constants';
-import { getPathForSubpage } from '../seo';
+import { Subpage, getPathForSubpage } from '../seo';
 
 interface NavbarProps {
-  currentPage?: 'home' | 'about' | 'contact' | 'treatments';
-  onNavigate?: (page: 'home' | 'about' | 'contact' | 'treatments', sectionId?: string) => void;
+  currentPage?: Subpage;
+  onNavigate?: (page: Subpage, sectionId?: string) => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ currentPage = 'home', onNavigate }) => {
@@ -33,7 +33,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage = 'home', onNavigate }) => 
     };
   }, [isOpen]);
 
-  const handleNavClick = (page: 'home' | 'about' | 'contact' | 'treatments', sectionId?: string) => {
+  const handleNavClick = (page: Subpage, sectionId?: string) => {
     setIsOpen(false);
     if (onNavigate) {
       onNavigate(page, sectionId);

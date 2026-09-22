@@ -1,14 +1,14 @@
 import React from 'react';
 import { IMAGES, ADDRESS, PHONE_DISPLAY, DR_ANDRE_INSTAGRAM, DR_ANA_INSTAGRAM } from '../constants';
 import { Instagram, MapPin, Phone, Mail, Award, Clock } from 'lucide-react';
-import { getPathForSubpage } from '../seo';
+import { Subpage, getPathForSubpage } from '../seo';
 
 interface FooterProps {
-  onNavigate?: (page: 'home' | 'about' | 'contact' | 'treatments', sectionId?: string) => void;
+  onNavigate?: (page: Subpage, sectionId?: string) => void;
 }
 
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
-  const handleNav = (page: 'home' | 'about' | 'contact' | 'treatments', sectionId?: string) => {
+  const handleNav = (page: Subpage, sectionId?: string) => {
     if (onNavigate) {
       onNavigate(page, sectionId);
     } else {

@@ -15,6 +15,7 @@ import TimeDelayedPopup from './components/TimeDelayedPopup';
 import AboutPage from './components/AboutPage';
 import ContactPage from './components/ContactPage';
 import TreatmentsPage from './components/TreatmentsPage';
+import DrAndrePage from './components/DrAndrePage';
 import { Subpage, getSubpageFromPath, getPathForSubpage, updatePageSeo } from './seo';
 
 const App: React.FC = () => {
@@ -29,7 +30,7 @@ const App: React.FC = () => {
 
       // Limpeza de hashes legados no navegador (#sobre -> /sobre, #tratamentos -> /tratamentos, etc.)
       const expectedPath = getPathForSubpage(page);
-      if (window.location.hash && (page === 'about' || page === 'treatments' || page === 'contact')) {
+      if (window.location.hash && (page === 'about' || page === 'treatments' || page === 'contact' || page === 'drandre')) {
         window.history.replaceState({ page }, '', expectedPath);
       }
 
@@ -81,7 +82,7 @@ const App: React.FC = () => {
       return;
     }
 
-    // Para as subpáginas (/sobre, /tratamentos, /contato) ou topo da home (/)
+    // Para as subpáginas (/sobre, /tratamentos, /contato, /drandrearaujo) ou topo da home (/)
     if (window.location.pathname !== targetPath || window.location.hash) {
       window.history.pushState({ page }, '', targetPath);
     }
@@ -94,7 +95,13 @@ const App: React.FC = () => {
     <div className="flex flex-col min-h-screen bg-white">
       <Navbar currentPage={currentPage} onNavigate={handleNavigate} />
       <main className="flex-grow">
-        {currentPage === 'about' ? (
+        {currentPage === 'drandre' ? (
+          <DrAndrePage
+            onNavigateHome={(secId) => handleNavigate('home', secId)}
+            onNavigateContact={() => handleNavigate('contact')}
+            onNavigateTreatments={() => handleNavigate('treatments')}
+          />
+        ) : currentPage === 'about' ? (
           <AboutPage 
             onNavigateHome={(secId) => handleNavigate('home', secId)} 
             onNavigateContact={() => handleNavigate('contact')}
@@ -116,7 +123,9 @@ const App: React.FC = () => {
             <Segmentation />
             <ClinicFeatures />
             <WhyChooseUs />
-            <AboutDoctors onViewFullAbout={() => handleNavigate('about')} />
+            <AboutDoctors 
+              onViewFullAbout={() => handleNavigate('about')} 
+            />
             <Services onViewAllTreatments={() => handleNavigate('treatments')} />
             <TreatmentEducation />
             <Testimonials />
