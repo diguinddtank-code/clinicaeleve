@@ -14,17 +14,53 @@
 
       gtag('config', 'AW-11245717972');
 
-      // Rastreamento automático de cliques em botões de WhatsApp
-      document.addEventListener('click', function(e) {
-        var target = e.target && e.target.closest ? e.target.closest('a[href*="wa.me"], a[href*="whatsapp.com"]') : null;
-        if (target) {
+      // Função global robusta para disparo de conversão do WhatsApp no Google Ads
+      window.trackWhatsAppConversion = function(sourceLabel) {
+        try {
+          var label = sourceLabel || 'Clique WhatsApp';
+          // Disparo de evento de conversão do Google Ads
           gtag('event', 'conversion', {
             'send_to': 'AW-11245717972',
             'event_category': 'WhatsApp',
-            'event_label': target.getAttribute('href') || 'WhatsApp Click'
+            'event_label': label,
+            'value': 1.0,
+            'currency': 'BRL'
           });
+
+          // Disparo de eventos padrão adicionais (Lead / Contact)
+          gtag('event', 'generate_lead', {
+            'event_category': 'WhatsApp',
+            'event_label': label
+          });
+          gtag('event', 'contact', {
+            'method': 'WhatsApp',
+            'event_label': label
+          });
+        } catch (err) {
+          console.warn('Erro ao registrar conversão:', err);
+        }
+      };
+
+      // 1. Intercepta cliques em qualquer link ou elemento que leve ao WhatsApp
+      document.addEventListener('click', function(e) {
+        var target = e.target && e.target.closest 
+          ? e.target.closest('a[href*="wa.me"], a[href*="whatsapp.com"], a[href*="api.whatsapp.com"], [data-whatsapp]') 
+          : null;
+        if (target) {
+          var href = target.getAttribute('href') || 'WhatsApp CTA';
+          var buttonText = (target.innerText || target.textContent || '').trim().slice(0, 50);
+          window.trackWhatsAppConversion(buttonText ? 'CTA: ' + buttonText : href);
         }
       }, true);
+
+      // 2. Intercepta aberturas programáticas de WhatsApp via window.open (ex: formulário de contato)
+      var originalWindowOpen = window.open;
+      window.open = function(url, target, features) {
+        if (typeof url === 'string' && (url.indexOf('wa.me') !== -1 || url.indexOf('whatsapp.com') !== -1)) {
+          window.trackWhatsAppConversion('Formulário / Abertura WhatsApp');
+        }
+        return originalWindowOpen.apply(this, arguments);
+      };
     </script>
     
     <!-- SEO Meta Tags Super Otimizadas -->
