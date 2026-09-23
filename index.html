@@ -4,6 +4,28 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="https://i.imgur.com/UXQZlMH.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11245717972"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-11245717972');
+
+      // Rastreamento automático de cliques em botões de WhatsApp
+      document.addEventListener('click', function(e) {
+        var target = e.target && e.target.closest ? e.target.closest('a[href*="wa.me"], a[href*="whatsapp.com"]') : null;
+        if (target) {
+          gtag('event', 'conversion', {
+            'send_to': 'AW-11245717972',
+            'event_category': 'WhatsApp',
+            'event_label': target.getAttribute('href') || 'WhatsApp Click'
+          });
+        }
+      }, true);
+    </script>
     
     <!-- SEO Meta Tags Super Otimizadas -->
     <title>Eleve Odontologia | Especialistas em Ouro Preto e Castelo BH</title>
