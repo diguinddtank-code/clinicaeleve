@@ -19,7 +19,7 @@ export interface PageSeoConfig {
   schema: Record<string, any>;
 }
 
-const BASE_URL = 'https://eleveodontologia.com.br';
+const BASE_URL = 'https://www.clinicaeleve.com';
 const CLINIC_LOGO = 'https://i.imgur.com/UXQZlMH.png';
 const CLINIC_FACADE = 'https://i.imgur.com/xEHLSXb.png';
 const CLINIC_RECEPTION = 'https://i.imgur.com/41386jO.png';
@@ -547,30 +547,38 @@ export const updatePageSeo = (page: Subpage) => {
   setMetaTag('name', 'description', config.description);
   setMetaTag('name', 'keywords', config.keywords);
 
-  // 4. OpenGraph Tags
+  // 4. Resolução Canônica Dinâmica (applet-seo standard)
+  const isProd = typeof window !== 'undefined' && 
+    window.location.origin && 
+    !window.location.origin.includes('localhost') && 
+    !window.location.origin.includes('run.app');
+  const currentOrigin = isProd ? window.location.origin : 'https://www.clinicaeleve.com';
+  const resolvedCanonicalUrl = `${currentOrigin}${config.path}`;
+
+  // 5. OpenGraph Tags
   setMetaTag('property', 'og:title', config.ogTitle);
   setMetaTag('property', 'og:description', config.ogDescription);
-  setMetaTag('property', 'og:url', config.canonicalUrl);
+  setMetaTag('property', 'og:url', resolvedCanonicalUrl);
   setMetaTag('property', 'og:type', config.ogType);
   setMetaTag('property', 'og:image', config.ogImage);
   setMetaTag('property', 'og:site_name', 'Eleve Odontologia');
 
-  // 5. Twitter Card Tags
+  // 6. Twitter Card Tags
   setMetaTag('name', 'twitter:card', 'summary_large_image');
   setMetaTag('name', 'twitter:title', config.ogTitle);
   setMetaTag('name', 'twitter:description', config.ogDescription);
   setMetaTag('name', 'twitter:image', config.ogImage);
 
-  // 6. Canonical Link
+  // 7. Canonical Link
   let canonicalLink = document.querySelector('link[rel="canonical"]');
   if (!canonicalLink) {
     canonicalLink = document.createElement('link');
     canonicalLink.setAttribute('rel', 'canonical');
     document.head.appendChild(canonicalLink);
   }
-  canonicalLink.setAttribute('href', config.canonicalUrl);
+  canonicalLink.setAttribute('href', resolvedCanonicalUrl);
 
-  // 7. Schema.org JSON-LD Dinâmico por Subpágina
+  // 8. Schema.org JSON-LD Dinâmico por Subpágina
   let schemaScript = document.getElementById('eleve-dynamic-schema') as HTMLScriptElement | null;
   if (!schemaScript) {
     schemaScript = document.createElement('script');
@@ -582,13 +590,17 @@ export const updatePageSeo = (page: Subpage) => {
 };
 
 /**
- * Utilitários de roteamento limpo para subpáginas HTML5
+ * Utilitários de roteamento limpo para subpáginas HTML5 e fallbacks
  */
 export const getSubpageFromPath = (
   pathname: string,
   hash: string
 ): { page: Subpage; sectionId?: string } => {
-  const cleanPath = pathname.replace(/\/+$/, '').toLowerCase();
+  // Higieniza pathname (remove query params e trailing slashes)
+  const rawPath = (pathname || '').split('?')[0].split('#')[0];
+  const cleanPath = (rawPath.startsWith('/') ? rawPath : `/${rawPath}`)
+    .replace(/\/+$/, '')
+    .toLowerCase();
 
   // Rotas canônicas de subpágina
   if (
@@ -596,27 +608,40 @@ export const getSubpageFromPath = (
     cleanPath === '/dr-andre-araujo' ||
     cleanPath === '/draandrearaujo' ||
     cleanPath === '/dr-andre' ||
-    cleanPath === '/drandre'
+    cleanPath === '/drandre' ||
+    cleanPath.endsWith('/drandrearaujo') ||
+    cleanPath.endsWith('/drandre')
   ) {
     return { page: 'drandre' };
   }
-  if (cleanPath === '/sobre' || cleanPath === '/sobre-nos' || cleanPath === '/about') {
+  if (
+    cleanPath === '/sobre' ||
+    cleanPath === '/sobre-nos' ||
+    cleanPath === '/about' ||
+    cleanPath.endsWith('/sobre')
+  ) {
     return { page: 'about' };
   }
   if (
     cleanPath === '/tratamentos' ||
     cleanPath === '/procedimentos' ||
     cleanPath === '/treatments' ||
-    cleanPath === '/servicos'
+    cleanPath === '/servicos' ||
+    cleanPath.endsWith('/tratamentos')
   ) {
     return { page: 'treatments' };
   }
-  if (cleanPath === '/contato' || cleanPath === '/agendar' || cleanPath === '/contact') {
+  if (
+    cleanPath === '/contato' ||
+    cleanPath === '/agendar' ||
+    cleanPath === '/contact' ||
+    cleanPath.endsWith('/contato')
+  ) {
     return { page: 'contact' };
   }
 
-  // Compatibilidade com navegação legada por hash (ex.: #drandrearaujo, #sobre, #tratamentos, #contato)
-  const cleanHash = hash.replace(/^#/, '').toLowerCase();
+  // Compatibilidade com navegação legada ou fallback por hash (#/drandrearaujo ou #drandrearaujo)
+  const cleanHash = (hash || '').replace(/^#\/?/, '').split('?')[0].toLowerCase();
   if (
     cleanHash === 'drandrearaujo' ||
     cleanHash === 'dr-andre-araujo' ||
